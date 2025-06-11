@@ -1,0 +1,250 @@
+/* Set tampilan umum */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(70, 70, 70, 0.9)), 
+                url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3ktkZH2IK7r1uLYaGR6zI5FFhsDOc4WR_FQ&s');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f4f4f4;
+    text-align: center;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Gunakan preferensi mode gelap dari sistem */
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #f4f4f4;
+    }
+
+    .profile-container, .bio, .stats, .chart-container {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .github-link {
+        background: linear-gradient(90deg, #444, #555);
+    }
+
+    .github-link:hover {
+        background: linear-gradient(90deg, #555, #444);
+        color: #FFD700;
+    }
+}
+
+/* Mode Gelap Manual */
+.dark-mode {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.95)), 
+                url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3ktkZH2IK7r1uLYaGR6zI5FFhsDOc4WR_FQ&s');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f4f4f4;
+}
+
+/* Mode Terang Manual */
+.light-mode {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 230, 230, 0.9)), 
+                url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3ktkZH2IK7r1uLYaGR6zI5FFhsDOc4WR_FQ&s');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* Animasi transisi */
+@keyframes fadeTransition {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+.dark-mode, .light-mode {
+    animation: fadeTransition 0.5s ease-in-out;
+}
+
+.dark-mode .profile-container, 
+.dark-mode .bio, 
+.dark-mode .stats, 
+.dark-mode .chart-container {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .github-link {
+    background: linear-gradient(90deg, #444, #555);
+}
+
+.dark-mode .github-link:hover {
+    background: linear-gradient(90deg, #555, #444);
+    color: #FFD700;
+}
+
+/* Tombol toggle */
+#toggleDarkMode {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #333, #444);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#toggleDarkMode:hover {
+    background: linear-gradient(90deg, #444, #333);
+    color: yellow;
+}
+
+/* Efek container utama */
+.profile-container {
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Foto profil */
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-img:hover {
+    transform: rotate(360deg);
+}
+
+/* Tombol GitHub */
+.github-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #444, #555);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.5s ease-in-out;
+}
+
+.github-link:hover {
+    background: linear-gradient(90deg, #555, #444);
+    color: #FFD700;
+    transform: scale(1.05);
+}
+
+/* Bio dan Statistik */
+.bio, .stats, .chart-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animasi teks masuk */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Terapkan animasi teks masuk */
+.profile-container h1, .profile-container p {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Warna teks khusus */
+.profile-container p {
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* Statistik dengan tampilan lebih elegan */
+.stats {
+    background: rgba(40, 40, 40, 0.9);
+    color: #00FFB3;
+}
+
+/* Efek hover untuk teks */
+.bio p:hover, .stats p:hover {
+    color: #FFD700;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.contact-section {
+    margin-top: 50px;
+    padding: 30px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 28px;
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f4f4f4;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #ccc;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border: 2px solid #FFD700;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-form button {
+    background: linear-gradient(90deg, #444, #555);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background: linear-gradient(90deg, #555, #444);
+    color: #FFD700;
+}
+  
