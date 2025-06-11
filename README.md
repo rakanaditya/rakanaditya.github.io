@@ -4,14 +4,14 @@ I'm a passionate developer working on Roblox projects, scripting with Lua, and b
 
 ---
 
-**Discord Status:** :black_circle: Offline
+**Discord Status:**  Offline
 
 ---
 
 ### :rocket: Tech Stack
-- :video_game: Roblox Lua (Luau)
-- :desktop: JavaScript, Python
-- :tools: Git, Node.js, HTML/CSS
+-  Roblox Lua (Luau)
+- : JavaScript, Python
+-  Git, Node.js, HTML/CSS
 
 ---
 
@@ -22,7 +22,7 @@ I'm a passionate developer working on Roblox projects, scripting with Lua, and b
 ---
 
 ### :dart: Currently Working On
-- :shopping_bags: **[Rumah Hantu Indonesia V.1](https://www.roblox.com/games/3187302798/Rumah-Hantu-Indonesia-V-1):** A thrilling Roblox experience set in a haunted house.
+-  **[Rumah Hantu Indonesia V.1](https://www.roblox.com/games/3187302798/Rumah-Hantu-Indonesia-V-1):** A thrilling Roblox experience set in a haunted house.
 
 ---
 
