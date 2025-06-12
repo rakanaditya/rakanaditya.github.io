@@ -55,8 +55,16 @@ fetch('https://api.github.com/users/rakanaditya/repos')
                     data: repoStars.slice(0, 5),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 
+                    borderWidth: 1 // ✅ ditambahkan nilai
                 }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
         });
     });
