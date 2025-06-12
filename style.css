@@ -17,8 +17,10 @@ body {
         color: #f4f4f4;
     }
 
-    .profile-container, .bio, .stats, .chart-container {
-        background: rgba(255, 255, 255, 0.1);
+    .profile-container, .bio,       .stats, .chart-container {
+       background: rgba(255, 255, 255, 0.15);
+    background-color: #333; 
+    backdrop-filter: blur(10px);
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
@@ -139,7 +141,7 @@ body {
 
 
 .profile-img:hover {
-    animation: discordGlow;
+   animation: discordGlow;
 }
 
 /* Tombol GitHub */
