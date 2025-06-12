@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Profil GitHub</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil GitHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <button id="toggleDarkMode">🌙 Mode Gelap</button>
+  <button id="toggleDarkMode">🌙 Mode Gelap</button>
 
-    <div class="profile-container">
-        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDhmbmN2OTZ1eWZ4bjB4NWNwZjN6MXhpb3NzdXB3eXc3enE5OHQyMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFDrI2s4RqlIQxV0G0/giphy.gif" alt="Foto Profil" class="profile-img neon-glow">
-        <h1>Rakan Aditya</h1>
-        <p>Sedang mengerjakan project game roblox</p>
-        <a href="https://www.roblox.com/games/11399819772/The-Rake-REMASTERED-Indonesia" class="github-link">Kunjungi Game</a>
-        <a href="https://github.com/rakanaditya" class="github-link">Kunjungi GitHub</a>
-    </div>
+  <div class="profile-container">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDhmbmN2OTZ1eWZ4bjB4NWNwZjN6MXhpb3NzdXB3eXc3enE5OHQyMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFDrI2s4RqlIQxV0G0/giphy.gif" alt="Foto Profil" class="profile-img neon-glow" />
+    <h1>Rakan Aditya</h1>
+    <p>Sedang mengerjakan project game roblox</p>
+    <a href="https://www.roblox.com/games/11399819772/The-Rake-REMASTERED-Indonesia" class="github-link" target="_blank">Kunjungi Game</a>
+    <a href="https://github.com/rakanaditya" class="github-link" target="_blank">Kunjungi GitHub</a>
+  </div>
 
-    <div class="bio">
-        <h2>Tentang Saya</h2>
-        <p>Saya seorang males ngoding</p>
-    </div>
+  <div class="bio">
+    <h2>Tentang Saya</h2>
+    <p>Saya seorang males ngoding</p>
+  </div>
 
-    <div class="stats">
-        <h2>Statistik GitHub</h2>
-        <p>Repositori: <span id="repos">...</span></p>
-        <p>Pengikut: <span id="followers">...</span></p>
-        <p>Komit: <span id="commits">...</span></p>
-        <p>Pull Requests: <span id="pullRequests">...</span></p>
-    </div>
+  <div class="stats">
+    <h2>Statistik GitHub</h2>
+    <p>Repositori: <span id="repos">...</span></p>
+    <p>Pengikut: <span id="followers">...</span></p>
+    <p>Komit: <span id="commits">...</span></p>
+    <p>Pull Requests: <span id="pullRequests">...</span></p>
+  </div>
 
-    <div class="chart-container">
-        <h2>Grafik Repo Teratas</h2>
-        <canvas id="repoChart" width="400" height="200"></canvas>
-    </div>
+  <div class="chart-container">
+    <h2>Grafik Repo Teratas</h2>
+    <canvas id="repoChart" width="400" height="200"></canvas>
+  </div>
 
-    <script src="script.js"></script>
+  <section class="contact-section">
+    <h2>Hubungi Saya</h2>
 
-<section class="contact-section">
-  <h2>Hubungi Saya</h2>
+    <form action="https://formsubmit.co/rakanadityabis@gmail.com" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Nama Kamu" required />
+      <input type="email" name="email" placeholder="Email Kamu" required />
+      <textarea name="message" placeholder="Tulis pesan di sini..." rows="5" required></textarea>
 
-  <form action="https://formsubmit.co/rakanadityabis@gmail.com" method="POST" class="contact-form">
-  <input type="text" name="name" placeholder="Nama Kamu" required />
-  <input type="email" name="email" placeholder="Email Kamu" required />
-  <textarea name="message" placeholder="Tulis pesan di sini..." rows="5" required></textarea>
+      <!-- Anti-spam & redirect -->
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://rakanaditya.github.io/thanks.html" />
 
-  <!-- Anti-spam & redirect ke halaman terima kasih -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://rakanaditya.github.io/thanks.html">
+      <button type="submit">Kirim Pesan</button>
+    </form>
+  </section>
 
-  <button type="submit">Kirim Pesan</button>
-</form>
-</section>
+  <script src="script.js"></script>
 </body>
 </html>
