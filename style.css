@@ -117,11 +117,29 @@ body {
     height: 120px;
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
 }
 
+/* Efek neon glow */
+.neon-glow {
+    box-shadow: 0 0 10px #aa00ff,
+                0 0 20px #aa00ff,
+                0 0 30px #aa00ff,
+                0 0 40px #aa00ff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.neon-glow:hover {
+    box-shadow: 0 0 15px #aa00ff,
+                0 0 30px #aa00ff,
+                0 0 45px #aa00ff,
+                0 0 60px #aa00ff;
+}
+
+
+
 .profile-img:hover {
-    transform: rotate(360deg);
+    animation: discordGlow;
 }
 
 /* Tombol GitHub */
@@ -248,3 +266,17 @@ body {
     color: #FFD700;
 }
   
+@keyframes discordGlow {
+    0% {
+        box-shadow: 0 0 5px #5865F2, 0 0 10px #5865F2, 0 0 15px #5865F2;
+        transform: scale(1.05) rotate(0deg);
+    }
+    50% {
+        box-shadow: 0 0 20px #5865F2, 0 0 40px #5865F2, 0 0 60px #5865F2;
+        transform: scale(1.1) rotate(180deg);
+    }
+    100% {
+        box-shadow: 0 0 5px #5865F2, 0 0 10px #5865F2, 0 0 15px #5865F2;
+        transform: scale(1.05) rotate(360deg);
+    }
+}
