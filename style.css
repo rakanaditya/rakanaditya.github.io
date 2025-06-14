@@ -101,10 +101,32 @@ body {
     color: yellow;
 }
 
+@media (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Wrapper untuk menyusun profil secara horizontal */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px; /* <== Ubah dari 30px ke 15px (agar lebih dekat) */
+  flex-wrap: wrap;
+  margin-top: 20px; /* <== Ubah dari 40px ke 20px */
+}
+
+
+
+
 /* Efek container utama */
-.profile-container {
-    width: 350px;
-    margin: 50px auto;
+.profile-container, .profile-side {
+    gap: 15px;
+    flex: 0 0 auto;
+    width: 300px;
+    margin: 20px auto;
     padding: 20px;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
@@ -182,7 +204,7 @@ body {
 }
 
 /* Terapkan animasi teks masuk */
-.profile-container h1, .profile-container p {
+.profile-container h1,.profile-container p {
     animation: fadeIn 1.2s ease-in-out;
 }
 
