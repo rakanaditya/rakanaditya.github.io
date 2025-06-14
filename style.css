@@ -105,16 +105,18 @@ body {
   .profile-wrapper {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
 }
+
 
 /* Wrapper untuk menyusun profil secara horizontal */
 .profile-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 15px; /* <== Ubah dari 30px ke 15px (agar lebih dekat) */
-  flex-wrap: wrap;
+  gap: 10px; /* <== Ubah dari 30px ke 15px (agar lebih dekat) */
+  flex-wrap: nowrap; /* Jangan wrap agar tetap sejajar */
   margin-top: 20px; /* <== Ubah dari 40px ke 20px */
 }
 
@@ -125,8 +127,8 @@ body {
 .profile-container, .profile-side {
     gap: 15px;
     flex: 0 0 auto;
-    width: 300px;
-    margin: 20px auto;
+    width: 200px;
+    margin: 10px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
