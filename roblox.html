@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Roblox Game Visit Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+      padding: 50px;
+    }
+    .counter-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: inline-block;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    #visits {
+      font-size: 32px;
+      font-weight: bold;
+      color: #e60039;
+      margin: 10px 0;
+    }
+    img.thumbnail {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .small {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-box">
+    <img id="gameThumbnail" class="thumbnail" src="" alt="Loading...">
+    <h1 id="gameTitle">Loading...</h1>
+    <div id="visits">Loading...</div>
+    <p class="small">Total visits to your game</p>
+  </div>
+
+  <script>
+    const placeId = "3187302798"; // 🔁 Ganti dengan Place ID kamu
+
+    // Step 1: Get Universe ID
+    fetch(`https://apis.roblox.com/universes/v1/places/${placeId}/universe`)
+      .then(res => res.json())
+      .then(data => {
+        const universeId = data.universeId;
+
+        // Step 2: Get Game Info
+        fetch(`https://games.roblox.com/v1/games?universeIds=${universeId}`)
+          .then(res => res.json())
+          .then(data => {
+            const gameData = data.data[0];
+            document.getElementById("gameTitle").textContent = gameData.name;
+            document.getElementById("visits").textContent = gameData.visits.toLocaleString();
+
+            // Step 3: Get Game Thumbnail
+            fetch(`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeId}&format=Png&size=512x512`)
+              .then(res => res.json())
+              .then(data => {
+                const thumbnailUrl = data.data[0].imageUrl;
+                document.getElementById("gameThumbnail").src = thumbnailUrl;
+              });
+          });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('gameTitle').textContent = "Failed to load";
+        document.getElementById('visits').textContent = "N/A";
+      });
+  </script>
+</body>
+</html>
