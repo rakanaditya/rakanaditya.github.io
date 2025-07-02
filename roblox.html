@@ -219,7 +219,13 @@
 
   <!-- Script -->
   <script>
-    const endpoint = "https://script.google.com/macros/s/AKfycbxkSKfYF6fTkvUhwfg_N_n8zCek1odaPfdSYjt86IdEEK77onMoyiAc8efL9TtxGuoMcA/exec";
+
+
+const endpoint = "/api/data";
+fetch(`${endpoint}?ytLive=1`)
+
+const endpoint = "http://localhost:3000/api/data";
+ //   const endpoint = "https://script.google.com/macros/s/AKfycbxkSKfYF6fTkvUhwfg_N_n8zCek1odaPfdSYjt86IdEEK77onMoyiAc8efL9TtxGuoMcA/exec";
     const defaultPlaceIds = [
       "3187302798",
       "11399819772",
