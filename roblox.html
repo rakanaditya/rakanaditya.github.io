@@ -219,7 +219,14 @@
 
   <!-- Script --> 
   <script>
-    const endpoint = "https://script.google.com/macros/s/AKfycbxQ_nXUqzvdd2iapwezz6CY3Mesenz3IbIQL7xABQC23BEw1-Hft6-z7fU9MS0w2fxpPQ/exec";
+
+const endpoint = "https://script.google.com/macros/s/AKfycbxQ_nXUqzvdd2iapwezz6CY3Mesenz3IbIQL7xABQC23BEw1-Hft6-z7fU9MS0w2fxpPQ/exec";
+const endpoint = "https://rakanaditya-github-io.vercel.app/api/proxy?url=" + encodeURIComponent(endpoint);
+
+fetch(proxyURL)
+  .then(res => res.json())
+  .then(data => console.log("✅ Data:", data))
+  .catch(err => console.error("❌ Proxy error:", err));
     const defaultPlaceIds = [
       "3187302798",
       "11399819772",
