@@ -149,6 +149,13 @@
     </div>
   </div>
 
+<div id="totalsDisplay" style="margin-bottom: 15px; font-size: 18px; font-weight: bold; color: #2e7d32; line-height: 1.5;">
+  🎯 Total semua kunjungan: ...<br>
+  🎮 Total pemain online saat ini: ...
+</div>
+
+
+
   <div class="leaderboard" id="leaderboard"></div>
 
 
@@ -209,6 +216,15 @@
         .then(data => {
           const container = document.getElementById("leaderboard");
           container.innerHTML = "";
+
+   // 🔢 Hitung total visits
+    const totalVisits = data.reduce((sum, game) => sum + (game.visits || 0), 0);
+const totalPlayers = data.reduce((sum, game) => sum + (game.playing || 0), 0);
+
+document.getElementById("totalsDisplay").innerHTML =
+  `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
+  `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
+
 
           data.sort((a, b) => (b.visits || 0) - (a.visits || 0));
 
