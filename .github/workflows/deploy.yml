@@ -1,2 +1,0 @@
-env:
-  GOOGLE_SCRIPT_URL: ${{ secrets.GOOGLE_SCRIPT_URL }}
