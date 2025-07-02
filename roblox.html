@@ -340,15 +340,17 @@ function checkYouTubeLive() {
     document.getElementById("savePlaceIdsBtn").addEventListener("click", function () {
       const input = document.getElementById("placeIdInput").value;
       const ids = input.split(",").map(id => id.trim()).filter(id => id.length > 0);
-      if (ids.length > 0) {
-        localStorage.setItem("customPlaceIds", ids.join(","));
-        countdown = 0;
-        loadLeaderboard();
-        alert("✅ Place IDs diperbarui!");
-      } else {
-        alert("⚠️ Masukkan minimal satu Place ID yang valid.");
-      }
-    });
+    if (ids.length === 0) {
+  alert("⚠️ Masukkan minimal satu Place ID yang valid.");
+} else if (ids.length > 20) {
+  alert("⚠️ Maksimal hanya boleh 20 Place ID!");
+} else {
+  localStorage.setItem("customPlaceIds", ids.join(","));
+  countdown = 0;
+  loadLeaderboard();
+  alert("✅ Place IDs diperbarui!");
+    }   
+});
 
     document.getElementById("resetPlaceIdsBtn").addEventListener("click", function () {
       localStorage.removeItem("customPlaceIds");
