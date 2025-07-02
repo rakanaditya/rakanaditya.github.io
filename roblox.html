@@ -279,50 +279,52 @@ function checkYouTubeLive() {
       fetch(`${endpoint}?placeIds=${placeIds.join(",")}`)
         .then(res => res.json())
         .then(data => {
-          const container = document.getElementById("leaderboard");
-          container.innerHTML = "";
+  const container = document.getElementById("leaderboard");
+  container.innerHTML = "";
 
-          const totalVisits = data.reduce((sum, game) => sum + (game.visits || 0), 0);
-          const totalPlayers = data.reduce((sum, game) => sum + (game.playing || 0), 0);
+  const games = data.games || [];
+  const totalVisits = games.reduce((sum, game) => sum + (game.visits || 0), 0);
+  const totalPlayers = games.reduce((sum, game) => sum + (game.playing || 0), 0);
 
-          document.getElementById("totalsDisplay").innerHTML =
-            `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
-            `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
+  document.getElementById("totalsDisplay").innerHTML =
+    `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
+    `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
 
-          data.sort((a, b) => (b.visits || 0) - (a.visits || 0));
+  games.sort((a, b) => (b.visits || 0) - (a.visits || 0));
 
-          data.forEach((game, index) => {
-            const rank = index + 1;
-            const previousRank = previousRanks[game.placeId];
-            previousRanks[game.placeId] = rank;
+  games.forEach((game, index) => {
+    const rank = index + 1;
+    const previousRank = previousRanks[game.placeId];
+    previousRanks[game.placeId] = rank;
 
-            let rankChange = "";
-            if (previousRank) {
-              if (rank < previousRank) {
-                rankChange = `<span class="up">⬆️</span>`;
-              } else if (rank > previousRank) {
-                rankChange = `<span class="down">⬇️</span>`;
-              }
-            }
+    let rankChange = "";
+    if (previousRank) {
+      if (rank < previousRank) {
+        rankChange = `<span class="up">⬆️</span>`;
+      } else if (rank > previousRank) {
+        rankChange = `<span class="down">⬇️</span>`;
+      }
+    }
 
-            const div = document.createElement("div");
-            div.className = "game-card";
-            if (game.error) {
-              div.innerHTML = `<p>Error loading game ${game.placeId}</p>`;
-            } else {
-              const isLive = game.playing > 1000 ? `<div class="live-badge">🔴 LIVE</div>` : "";
-              div.innerHTML = `
-                <div class="rank-indicator">#${rank} ${rankChange}</div>
-                ${isLive}
-                <img src="${game.thumbnail}" alt="${game.name}">
-                <div class="game-name">${game.name}</div>
-                <div class="visits">${game.visits.toLocaleString()} visits</div>
-                <div class="visits" style="color:#007bff">${game.playing.toLocaleString()} players online</div>
-              `;
-            }
-            container.appendChild(div);
-          });
-        });
+    const div = document.createElement("div");
+    div.className = "game-card";
+    if (game.error) {
+      div.innerHTML = `<p>Error loading game ${game.placeId}</p>`;
+    } else {
+      const isLive = game.playing > 1000 ? `<div class="live-badge">🔴 LIVE</div>` : "";
+      div.innerHTML = `
+        <div class="rank-indicator">#${rank} ${rankChange}</div>
+        ${isLive}
+        <img src="${game.thumbnail}" alt="${game.name}">
+        <div class="game-name">${game.name}</div>
+        <div class="visits">${game.visits.toLocaleString()} visits</div>
+        <div class="visits" style="color:#007bff">${game.playing.toLocaleString()} players online</div>
+      `;
+    }
+    container.appendChild(div);
+  });
+});
+
     }
 
     function updateCountdownUI() {
