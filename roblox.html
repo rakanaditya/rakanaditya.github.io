@@ -130,9 +130,22 @@
 
 <body>
 
-<div id="youtubeLiveNotice" style="display:none; background: crimson; color: white; padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px;">
-  🔴 <a id="youtubeLiveLink" href="#" target="_blank" style="color: yellow;">Sedang LIVE di YouTube – Klik untuk menonton!</a>
+<div id="youtubeLiveNotice" style="display:none; background: #b71c1c; color: white; padding: 15px; border-radius: 12px; margin-bottom: 20px; position: relative; max-width: 800px; margin-left: auto; margin-right: auto; text-align: left;">
+  <h2 style="margin-top: 0;">🔴 Aditya RB Sedang LIVE di YouTube</h2>
+  <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+    <img id="youtubeThumbnail" src="" alt="Live Thumbnail" style="width: 240px; border-radius: 10px;">
+    <div>
+      <p id="youtubeTitle" style="font-size: 16px; font-weight: bold; margin-bottom: 6px;"></p>
+      <a id="youtubeLiveLink" href="#" target="_blank" style="background: yellow; color: black; padding: 10px 16px; border-radius: 8px; font-weight: bold; text-decoration: none;">▶️ Tonton Sekarang</a>
+      <p style="margin-top: 10px; font-size: 14px; color: #ccc;">Channel: <span id="youtubeChannelName"></span></p>
+    </div>
+  </div>
+
+<iframe id="youtubeEmbed" width="100%" height="315" src="" frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen style="margin-top: 10px; border-radius: 8px;"></iframe>
 </div>
+
 
 
   <h1>🔥 Roblox Game Visit Leaderboard</h1>
@@ -221,15 +234,31 @@ function checkYouTubeLive() {
     .then(data => {
       const yt = data.find(item => item.youtubeLive !== undefined);
       if (yt && yt.youtubeLive && yt.youtubeVideoId) {
-        const videoUrl = `https://www.youtube.com/watch?v=${yt.youtubeVideoId}`;
-        document.getElementById("youtubeLiveLink").href = videoUrl;
-        document.getElementById("youtubeLiveNotice").style.display = "block";
+        const videoId = yt.youtubeVideoId;
+        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        const apiKey = "AIzaSyAoKl5ricFM5XnJRT5NvXUdHlBqk9oBuTQ";
+        const videoInfoUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`;
+
+        fetch(videoInfoUrl)
+          .then(res => res.json())
+          .then(info => {
+            const snippet = info.items[0].snippet;
+            document.getElementById("youtubeLiveLink").href = videoUrl;
+            document.getElementById("youtubeThumbnail").src = snippet.thumbnails.medium.url;
+            document.getElementById("youtubeTitle").textContent = snippet.title;
+            document.getElementById("youtubeChannelName").textContent = snippet.channelTitle;
+            document.getElementById("youtubeLiveNotice").style.display = "block";
+            document.getElementById("youtubeEmbed").src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
+          });
       } else {
         document.getElementById("youtubeLiveNotice").style.display = "none";
+        document.getElementById("youtubeEmbed").src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
       }
     })
     .catch(err => console.error("Gagal cek YouTube Live:", err));
 }
+
 
 
 
