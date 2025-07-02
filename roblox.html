@@ -129,6 +129,13 @@
 </head>
 <body>
   <h1>🔥 Roblox Game Visit Leaderboard</h1>
+
+<div style="margin-bottom: 15px;">
+  <input id="searchInput" type="text" placeholder="🔍 Search game..." 
+         style="padding: 8px; border-radius: 6px; width: 250px; font-size: 14px;">
+</div>
+
+
   <div id="countdownWrapper">
     <div id="countdownText">⏳ Refresh in: 30s</div>
     <div id="countdownBarContainer">
@@ -231,6 +238,33 @@
 
     loadLeaderboard();
     setInterval(updateCountdownUI, 1000);
+
+// Simpan ke localStorage saat mengetik
+document.getElementById("searchInput").addEventListener("input", function () {
+  const keyword = this.value.toLowerCase();
+  localStorage.setItem("lastSearch", keyword); // 💾 simpan
+
+  document.querySelectorAll(".game-card").forEach(card => {
+    const name = card.querySelector(".game-name")?.textContent.toLowerCase() || "";
+    card.style.display = name.includes(keyword) ? "block" : "none";
+  });
+});
+
+// Saat halaman dimuat, isi pencarian terakhir
+window.addEventListener("DOMContentLoaded", () => {
+  const last = localStorage.getItem("lastSearch");
+  if (last) {
+    const input = document.getElementById("searchInput");
+    input.value = last;
+
+    // Tunggu leaderboard terisi dulu
+    setTimeout(() => {
+      input.dispatchEvent(new Event("input"));
+    }, 500); // sedikit delay agar card sudah siap
+  }
+});
+
+
   </script>
 </body>
 </html>
