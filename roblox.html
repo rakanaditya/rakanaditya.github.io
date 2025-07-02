@@ -314,8 +314,11 @@ function checkYouTubeLive() {
     }
 
     // Start
-    loadLeaderboard();
-    setInterval(updateCountdownUI, 1000);
+   // Start
+loadLeaderboard();
+setInterval(updateCountdownUI, 1000);
+checkYouTubeLive(); // ✅ Tambahkan ini agar notifikasi LIVE muncul
+setInterval(checkYouTubeLive, 60000); // setiap 60 detik
 
     // Search
     const searchInput = document.getElementById("searchInput");
