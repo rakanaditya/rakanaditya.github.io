@@ -218,97 +218,21 @@
   </div>
 
   <!-- Script --> 
- <script>
-const rawEndpoint = "https://script.google.com/macros/s/AKfycbwscA8MDF5obU3XRqrGWAf9Az9MaN8FkFdBreC9kjzUqYlbSXNsyF6Il3tQwn0J-2mAnA/exec";
-const proxyBase = "https://rakanaditya-github-io.vercel.app/api/proxy?url=";
+  <script>
+    const endpoint = "https://script.google.com/macros/s/AKfycbwscA8MDF5obU3XRqrGWAf9Az9MaN8FkFdBreC9kjzUqYlbSXNsyF6Il3tQwn0J-2mAnA/exec";
+    const defaultPlaceIds = [
+      "3187302798",
+      "11399819772",
+      "115326572683504",
+      "115958813741074"
+    ];
 
-function buildUrlWithParams(params) {
-  const fullUrl = `${rawEndpoint}?${new URLSearchParams(params).toString()}`;
-  return proxyBase + encodeURIComponent(fullUrl);
-}
-
-const defaultPlaceIds = [
-  "3187302798",
-  "11399819772",
-  "115326572683504",
-  "115958813741074"
-];
-
-function getCurrentPlaceIds() {
-  const saved = localStorage.getItem("customPlaceIds");
-  if (saved) {
-    return saved.split(",").map(id => id.trim()).filter(id => id.length > 0);
-  }
-  return defaultPlaceIds;
-}
-
-let previousRanks = {};
-const refreshInterval = 30;
-let countdown = 0;
-
-function loadLeaderboard() {
-  const placeIds = getCurrentPlaceIds();
-  const url = buildUrlWithParams({ placeIds: placeIds.join(",") });
-
-  fetch(url)
-    .then(res => res.json())
-    .then(result => {
-      const data = Array.isArray(result) ? result.filter(item => !item.youtubeLive && !item.youtubeLiveError) : [];
-
-      const container = document.getElementById("leaderboard");
-      container.innerHTML = "";
-
-      const totalVisits = data.reduce((sum, game) => sum + (game.visits || 0), 0);
-      const totalPlayers = data.reduce((sum, game) => sum + (game.playing || 0), 0);
-
-      document.getElementById("totalsDisplay").innerHTML =
-        `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
-        `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
-
-      data.sort((a, b) => (b.visits || 0) - (a.visits || 0));
-
-      data.forEach((game, index) => {
-        const rank = index + 1;
-        const previousRank = previousRanks[game.placeId];
-        previousRanks[game.placeId] = rank;
-
-        let rankChange = "";
-        if (previousRank) {
-          if (rank < previousRank) rankChange = `<span class="up">⬆️</span>`;
-          else if (rank > previousRank) rankChange = `<span class="down">⬇️</span>`;
-        }
-
-        const div = document.createElement("div");
-        div.className = "game-card";
-
-        if (game.error) {
-          div.innerHTML = `<p>Error loading game ${game.placeId}</p>`;
-        } else {
-          const isLive = game.playing > 1000 ? `<div class="live-badge">🔴 LIVE</div>` : "";
-          div.innerHTML = `
-            <div class="rank-indicator">#${rank} ${rankChange}</div>
-            ${isLive}
-            <img src="${game.thumbnail}" alt="${game.name}">
-            <div class="game-name">${game.name}</div>
-            <div class="visits">${game.visits.toLocaleString()} visits</div>
-            <div class="visits" style="color:#007bff">${game.playing.toLocaleString()} players online</div>
-          `;
-        }
-
-        container.appendChild(div);
-      });
-    })
-    .catch(err => console.error("❌ Gagal load leaderboard:", err));
-}
 
 function checkYouTubeLive() {
-  const url = buildUrlWithParams({ ytLive: "1" });
-
-  fetch(url)
+  fetch(`${endpoint}?ytLive=1`)
     .then(res => res.json())
-    .then(result => {
-      const yt = Array.isArray(result) ? result.find(item => item.youtubeLive || item.youtubeLive === false) : null;
-
+    .then(data => {
+      const yt = data.find(item => item.youtubeLive !== undefined);
       if (yt && yt.youtubeLive && yt.youtubeVideoId) {
         const videoId = yt.youtubeVideoId;
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
@@ -325,81 +249,147 @@ function checkYouTubeLive() {
             document.getElementById("youtubeChannelName").textContent = snippet.channelTitle;
             document.getElementById("youtubeLiveNotice").style.display = "block";
             document.getElementById("youtubeEmbed").src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
           });
       } else {
         document.getElementById("youtubeLiveNotice").style.display = "none";
-        document.getElementById("youtubeEmbed").src = "";
+        document.getElementById("youtubeEmbed").src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
       }
     })
-    .catch(err => console.error("❌ Gagal cek YouTube Live:", err));
+    .catch(err => console.error("Gagal cek YouTube Live:", err));
 }
 
-function updateCountdownUI() {
-  const text = document.getElementById("countdownText");
-  const bar = document.getElementById("countdownBar");
 
-  const secondsLeft = refreshInterval - countdown;
-  text.textContent = `⏳ Refresh in: ${secondsLeft}s`;
 
-  const percent = (countdown / refreshInterval) * 100;
-  bar.style.width = percent + "%";
 
-  countdown++;
-  if (countdown > refreshInterval) {
-    countdown = 0;
-    loadLeaderboard();
-  }
-}
+    function getCurrentPlaceIds() {
+      const saved = localStorage.getItem("customPlaceIds");
+      if (saved) {
+        return saved.split(",").map(id => id.trim()).filter(id => id.length > 0);
+      }
+      return defaultPlaceIds;
+    }
 
-// Start everything
+    let previousRanks = {};
+    const refreshInterval = 30;
+    let countdown = 0;
+
+    function loadLeaderboard() {
+      const placeIds = getCurrentPlaceIds();
+      fetch(`${endpoint}?placeIds=${placeIds.join(",")}`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("leaderboard");
+          container.innerHTML = "";
+
+          const totalVisits = data.reduce((sum, game) => sum + (game.visits || 0), 0);
+          const totalPlayers = data.reduce((sum, game) => sum + (game.playing || 0), 0);
+
+          document.getElementById("totalsDisplay").innerHTML =
+            `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
+            `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
+
+          data.sort((a, b) => (b.visits || 0) - (a.visits || 0));
+
+          data.forEach((game, index) => {
+            const rank = index + 1;
+            const previousRank = previousRanks[game.placeId];
+            previousRanks[game.placeId] = rank;
+
+            let rankChange = "";
+            if (previousRank) {
+              if (rank < previousRank) {
+                rankChange = `<span class="up">⬆️</span>`;
+              } else if (rank > previousRank) {
+                rankChange = `<span class="down">⬇️</span>`;
+              }
+            }
+
+            const div = document.createElement("div");
+            div.className = "game-card";
+            if (game.error) {
+              div.innerHTML = `<p>Error loading game ${game.placeId}</p>`;
+            } else {
+              const isLive = game.playing > 1000 ? `<div class="live-badge">🔴 LIVE</div>` : "";
+              div.innerHTML = `
+                <div class="rank-indicator">#${rank} ${rankChange}</div>
+                ${isLive}
+                <img src="${game.thumbnail}" alt="${game.name}">
+                <div class="game-name">${game.name}</div>
+                <div class="visits">${game.visits.toLocaleString()} visits</div>
+                <div class="visits" style="color:#007bff">${game.playing.toLocaleString()} players online</div>
+              `;
+            }
+            container.appendChild(div);
+          });
+        });
+    }
+
+    function updateCountdownUI() {
+      const text = document.getElementById("countdownText");
+      const bar = document.getElementById("countdownBar");
+
+      const secondsLeft = refreshInterval - countdown;
+      text.textContent = `⏳ Refresh in: ${secondsLeft}s`;
+
+      const percent = (countdown / refreshInterval) * 100;
+      bar.style.width = percent + "%";
+
+      countdown++;
+      if (countdown > refreshInterval) {
+        countdown = 0;
+        loadLeaderboard();
+      }
+    }
+
+    // Start
+   // Start
 loadLeaderboard();
 setInterval(updateCountdownUI, 1000);
-checkYouTubeLive();
-setInterval(checkYouTubeLive, 60000);
+checkYouTubeLive(); // ✅ Tambahkan ini agar notifikasi LIVE muncul
+setInterval(checkYouTubeLive, 60000); // setiap 60 detik
 
-// Search & Filter
-const searchInput = document.getElementById("searchInput");
-const clearButton = document.getElementById("clearSearch");
+    // Search
+    const searchInput = document.getElementById("searchInput");
+    const clearButton = document.getElementById("clearSearch");
 
-searchInput.addEventListener("input", function () {
-  const keyword = this.value.toLowerCase();
-  document.querySelectorAll(".game-card").forEach(card => {
-    const name = card.querySelector(".game-name")?.textContent.toLowerCase() || "";
-    card.style.display = name.includes(keyword) ? "block" : "none";
-  });
-});
+    searchInput.addEventListener("input", function () {
+      const keyword = this.value.toLowerCase();
+      document.querySelectorAll(".game-card").forEach(card => {
+        const name = card.querySelector(".game-name")?.textContent.toLowerCase() || "";
+        card.style.display = name.includes(keyword) ? "block" : "none";
+      });
+    });
 
-clearButton.addEventListener("click", function () {
-  searchInput.value = "";
-  document.querySelectorAll(".game-card").forEach(card => {
-    card.style.display = "block";
-  });
-});
+    clearButton.addEventListener("click", function () {
+      searchInput.value = "";
+      document.querySelectorAll(".game-card").forEach(card => {
+        card.style.display = "block";
+      });
+    });
 
-// Save / Reset
-document.getElementById("savePlaceIdsBtn").addEventListener("click", function () {
-  const input = document.getElementById("placeIdInput").value;
-  const ids = input.split(",").map(id => id.trim()).filter(id => id.length > 0);
-
-  if (ids.length === 0) {
-    alert("⚠️ Masukkan minimal satu Place ID yang valid.");
-  } else if (ids.length > 10) {
-    alert("⚠️ Maksimal hanya boleh 10 Place ID!");
-  } else {
-    localStorage.setItem("customPlaceIds", ids.join(","));
-    countdown = 0;
-    loadLeaderboard();
-    alert("✅ Place IDs diperbarui!");
-  }
-});
-
-document.getElementById("resetPlaceIdsBtn").addEventListener("click", function () {
-  localStorage.removeItem("customPlaceIds");
+    // Place ID Save/Reset
+    document.getElementById("savePlaceIdsBtn").addEventListener("click", function () {
+      const input = document.getElementById("placeIdInput").value;
+      const ids = input.split(",").map(id => id.trim()).filter(id => id.length > 0);
+    if (ids.length === 0) {
+  alert("⚠️ Masukkan minimal satu Place ID yang valid.");
+} else if (ids.length > 10) {
+  alert("⚠️ Maksimal hanya boleh 10 Place ID!");
+} else {
+  localStorage.setItem("customPlaceIds", ids.join(","));
   countdown = 0;
   loadLeaderboard();
-  alert("🔄 Place IDs direset ke default.");
+  alert("✅ Place IDs diperbarui!");
+    }   
 });
-</script>
 
+    document.getElementById("resetPlaceIdsBtn").addEventListener("click", function () {
+      localStorage.removeItem("customPlaceIds");
+      countdown = 0;
+      loadLeaderboard();
+      alert("🔄 Place IDs direset ke default.");
+    });
+  </script>
 </body>
 </html>
