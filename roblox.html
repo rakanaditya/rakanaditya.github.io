@@ -128,20 +128,33 @@
   </style>
 </head>
 
-
-
 <body>
   <h1>🔥 Roblox Game Visit Leaderboard</h1>
 
-<div style="margin-bottom: 15px;">
-  <input id="searchInput" type="text" placeholder="🔍 Search game..." 
-         style="padding: 8px; border-radius: 6px; width: 250px; font-size: 14px;">
-<button id="clearSearch" style="margin-left: 8px; padding: 8px 12px; border: none; border-radius: 6px; background: #e53935; color: white; font-weight: bold; cursor: pointer;">
-  ❌ Clear
-</button>
+  <!-- Input Place ID Manual -->
+  <div style="margin-bottom: 15px;">
+    <input id="placeIdInput" type="text" placeholder="➕ Tambah Place ID (pisahkan dengan koma)" 
+           style="padding: 8px; border-radius: 6px; width: 320px; font-size: 14px;">
+    <button id="savePlaceIdsBtn" 
+            style="margin-left: 8px; padding: 8px 12px; border: none; border-radius: 6px; background: #4caf50; color: white; font-weight: bold; cursor: pointer;">
+      💾 Simpan ID
+    </button>
+    <button id="resetPlaceIdsBtn" 
+            style="margin-left: 5px; padding: 8px 12px; border: none; border-radius: 6px; background: #b71c1c; color: white; font-weight: bold; cursor: pointer;">
+      ♻️ Reset Default
+    </button>
+  </div>
 
+  <!-- Search Bar -->
+  <div style="margin-bottom: 15px;">
+    <input id="searchInput" type="text" placeholder="🔍 Search game..." 
+           style="padding: 8px; border-radius: 6px; width: 250px; font-size: 14px;">
+    <button id="clearSearch" style="margin-left: 8px; padding: 8px 12px; border: none; border-radius: 6px; background: #e53935; color: white; font-weight: bold; cursor: pointer;">
+      ❌ Clear
+    </button>
+  </div>
 
-
+  <!-- Countdown UI -->
   <div id="countdownWrapper">
     <div id="countdownText">⏳ Refresh in: 30s</div>
     <div id="countdownBarContainer">
@@ -149,15 +162,14 @@
     </div>
   </div>
 
-<div id="totalsDisplay" style="margin-bottom: 15px; font-size: 18px; font-weight: bold; color: #2e7d32; line-height: 1.5;">
-  🎯 Total semua kunjungan: ...<br>
-  🎮 Total pemain online saat ini: ...
-</div>
+  <!-- Total Display -->
+  <div id="totalsDisplay" style="margin-bottom: 15px; font-size: 18px; font-weight: bold; color: #2e7d32; line-height: 1.5;">
+    🎯 Total semua kunjungan: ...<br>
+    🎮 Total pemain online saat ini: ...
+  </div>
 
-
-
+  <!-- Leaderboard -->
   <div class="leaderboard" id="leaderboard"></div>
-
 
   <!-- Discord Widget -->
   <iframe 
@@ -176,55 +188,52 @@
       Join Our Discord Server
     </a>
 
-<h3 style="margin-top: 30px;">💖 Dukung Kami</h3>
-<p style="font-size: 14px; margin-bottom: 10px;">
-  Website ini dikembangkan secara gratis. Jika kamu merasa terbantu, kamu bisa dukung kami lewat donasi:
-</p>
+    <h3 style="margin-top: 30px;">💖 Dukung Kami</h3>
+    <p style="font-size: 14px; margin-bottom: 10px;">
+      Website ini dikembangkan secara gratis. Jika kamu merasa terbantu, kamu bisa dukung kami lewat donasi:
+    </p>
 
-<!-- Ganti link sesuai platform -->
-<a href="https://saweria.co/rakanaditya" target="_blank" style="display: inline-block; background: #ffc107; color: black; padding: 10px 20px; border-radius: 8px; font-weight: bold; text-decoration: none;">
-  🎁 Donasi via Saweria
-</a>
-
-<!-- Atau bisa pakai QR -->
-<!--
-<div style="margin-top: 10px;">
-  <img src="https://example.com/qris.png" alt="QRIS" width="180" style="border-radius: 8px;">
-  <p style="font-size: 12px; color: #ccc;">Scan QR untuk donasi via QRIS</p>
-</div>
--->
-
-
+    <a href="https://saweria.co/rakanaditya" target="_blank" style="display: inline-block; background: #ffc107; color: black; padding: 10px 20px; border-radius: 8px; font-weight: bold; text-decoration: none;">
+      🎁 Donasi via Saweria
+    </a>
   </div>
 
+  <!-- Script -->
   <script>
     const endpoint = "https://script.google.com/macros/s/AKfycbxSW4OrcUOFwC0agA2LrU3bthkYf0TU6IqbkgHI0C2tQ_vU_a3w3az9CTMqOfYZQ1WUVw/exec";
-    const placeIds = [
+    const defaultPlaceIds = [
       "3187302798",
       "11399819772",
       "115326572683504",
       "115958813741074"
     ];
 
+    function getCurrentPlaceIds() {
+      const saved = localStorage.getItem("customPlaceIds");
+      if (saved) {
+        return saved.split(",").map(id => id.trim()).filter(id => id.length > 0);
+      }
+      return defaultPlaceIds;
+    }
+
     let previousRanks = {};
     const refreshInterval = 30;
     let countdown = 0;
 
     function loadLeaderboard() {
+      const placeIds = getCurrentPlaceIds();
       fetch(`${endpoint}?placeIds=${placeIds.join(",")}`)
         .then(res => res.json())
         .then(data => {
           const container = document.getElementById("leaderboard");
           container.innerHTML = "";
 
-   // 🔢 Hitung total visits
-    const totalVisits = data.reduce((sum, game) => sum + (game.visits || 0), 0);
-const totalPlayers = data.reduce((sum, game) => sum + (game.playing || 0), 0);
+          const totalVisits = data.reduce((sum, game) => sum + (game.visits || 0), 0);
+          const totalPlayers = data.reduce((sum, game) => sum + (game.playing || 0), 0);
 
-document.getElementById("totalsDisplay").innerHTML =
-  `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
-  `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
-
+          document.getElementById("totalsDisplay").innerHTML =
+            `🎯 Total semua kunjungan: ${totalVisits.toLocaleString()} visits<br>` +
+            `🎮 Total pemain online saat ini: ${totalPlayers.toLocaleString()} players`;
 
           data.sort((a, b) => (b.visits || 0) - (a.visits || 0));
 
@@ -279,40 +288,49 @@ document.getElementById("totalsDisplay").innerHTML =
       }
     }
 
+    // Start
     loadLeaderboard();
     setInterval(updateCountdownUI, 1000);
 
-const searchInput = document.getElementById("searchInput");
-const clearButton = document.getElementById("clearSearch");
+    // Search
+    const searchInput = document.getElementById("searchInput");
+    const clearButton = document.getElementById("clearSearch");
 
-searchInput.addEventListener("input", function () {
-  const keyword = this.value.toLowerCase();
-  localStorage.setItem("lastSearch", keyword);
+    searchInput.addEventListener("input", function () {
+      const keyword = this.value.toLowerCase();
+      document.querySelectorAll(".game-card").forEach(card => {
+        const name = card.querySelector(".game-name")?.textContent.toLowerCase() || "";
+        card.style.display = name.includes(keyword) ? "block" : "none";
+      });
+    });
 
-  // Tampilkan / sembunyikan tombol ❌
-  if (keyword.length > 0) {
-    clearButton.classList.add("visible");
-  } else {
-    clearButton.classList.remove("visible");
-  }
+    clearButton.addEventListener("click", function () {
+      searchInput.value = "";
+      document.querySelectorAll(".game-card").forEach(card => {
+        card.style.display = "block";
+      });
+    });
 
-  document.querySelectorAll(".game-card").forEach(card => {
-    const name = card.querySelector(".game-name")?.textContent.toLowerCase() || "";
-    card.style.display = name.includes(keyword) ? "block" : "none";
-  });
-});
+    // Place ID Save/Reset
+    document.getElementById("savePlaceIdsBtn").addEventListener("click", function () {
+      const input = document.getElementById("placeIdInput").value;
+      const ids = input.split(",").map(id => id.trim()).filter(id => id.length > 0);
+      if (ids.length > 0) {
+        localStorage.setItem("customPlaceIds", ids.join(","));
+        countdown = 0;
+        loadLeaderboard();
+        alert("✅ Place IDs diperbarui!");
+      } else {
+        alert("⚠️ Masukkan minimal satu Place ID yang valid.");
+      }
+    });
 
-clearButton.addEventListener("click", function () {
-  searchInput.value = "";
-  localStorage.removeItem("lastSearch");
-  clearButton.classList.remove("visible");
-
-  document.querySelectorAll(".game-card").forEach(card => {
-    card.style.display = "block";
-  });
-});
-
-
+    document.getElementById("resetPlaceIdsBtn").addEventListener("click", function () {
+      localStorage.removeItem("customPlaceIds");
+      countdown = 0;
+      loadLeaderboard();
+      alert("🔄 Place IDs direset ke default.");
+    });
   </script>
 </body>
 </html>
