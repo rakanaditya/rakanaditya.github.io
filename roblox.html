@@ -232,7 +232,7 @@ function checkYouTubeLive() {
   fetch(`${endpoint}?ytLive=1`)
     .then(res => res.json())
     .then(data => {
-      const yt = data.find(item => item.youtubeLive !== undefined);
+      const yt = data.youtube;
       if (yt && yt.youtubeLive && yt.youtubeVideoId) {
         const videoId = yt.youtubeVideoId;
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
@@ -249,15 +249,15 @@ function checkYouTubeLive() {
             document.getElementById("youtubeChannelName").textContent = snippet.channelTitle;
             document.getElementById("youtubeLiveNotice").style.display = "block";
             document.getElementById("youtubeEmbed").src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-
           });
       } else {
         document.getElementById("youtubeLiveNotice").style.display = "none";
-        document.getElementById("youtubeEmbed").src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        document.getElementById("youtubeEmbed").src = "";
       }
     })
     .catch(err => console.error("Gagal cek YouTube Live:", err));
 }
+
 
 
 
