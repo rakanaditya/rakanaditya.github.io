@@ -206,7 +206,7 @@
 
   <!-- Script -->
   <script>
-    const endpoint = "https://script.google.com/macros/s/AKfycbwItbt3Ub2jCeeJ4zQsRJICcu2uQEXaHPGW4Nr_QoW7twyHeS4FIGC5y9f-yyu14jkl/exec";
+    const endpoint = "https://script.google.com/macros/s/AKfycbxkSKfYF6fTkvUhwfg_N_n8zCek1odaPfdSYjt86IdEEK77onMoyiAc8efL9TtxGuoMcA/exec";
     const defaultPlaceIds = [
       "3187302798",
       "11399819772",
@@ -345,8 +345,8 @@ setInterval(checkYouTubeLive, 60000); // setiap 60 detik
       const ids = input.split(",").map(id => id.trim()).filter(id => id.length > 0);
     if (ids.length === 0) {
   alert("⚠️ Masukkan minimal satu Place ID yang valid.");
-} else if (ids.length > 20) {
-  alert("⚠️ Maksimal hanya boleh 20 Place ID!");
+} else if (ids.length > 10) {
+  alert("⚠️ Maksimal hanya boleh 10 Place ID!");
 } else {
   localStorage.setItem("customPlaceIds", ids.join(","));
   countdown = 0;
