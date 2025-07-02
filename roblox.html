@@ -142,12 +142,16 @@
             if (game.error) {
               div.innerHTML = `<p>Error loading game ${game.placeId}</p>`;
             } else {
-              div.innerHTML = `
-                <div class="rank-indicator">#${rank} ${rankChange}</div>
-                <img src="${game.thumbnail}" alt="${game.name}">
-                <div class="game-name">${game.name}</div>
-                <div class="visits">${game.visits.toLocaleString()} visits</div>
-              `;
+      const isLive = game.playing > 1000 ? `<div class="live-badge">🔴 LIVE</div>` : "";
+div.innerHTML = `
+  <div class="rank-indicator">#${rank} ${rankChange}</div>
+  ${isLive}
+  <img src="${game.thumbnail}" alt="${game.name}">
+  <div class="game-name">${game.name}</div>
+  <div class="visits">${game.visits.toLocaleString()} visits</div>
+  <div class="visits" style="color:#007bff">${game.playing.toLocaleString()} players online</div>
+`;
+
             }
             container.appendChild(div);
           });
