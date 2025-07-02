@@ -12,6 +12,18 @@ body {
 }
 
 
+#clearSearch {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#clearSearch.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .live-badge {
   position: absolute;
   top: 10px;
