@@ -26,6 +26,10 @@
       color: #e60039;
       margin: 15px 0;
     }
+    .small {
+      font-size: 12px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -33,20 +37,38 @@
     <img id="thumb" src="" alt="Loading..."><br>
     <h2 id="name">Loading...</h2>
     <div id="visits">...</div>
+    <div class="small" id="updateTime">Updating...</div>
   </div>
 
   <script>
-    fetch("https://script.google.com/macros/s/AKfycby9NojY1TH_fMEbaBHEIwB2ygwvJhRZS66Fl-pK8Q5nudCpmoz2b2bwsVpwwkMBwVuCBw/exec")
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          document.getElementById("name").textContent = "Error: " + data.error;
-          return;
-        }
-        document.getElementById("name").textContent = data.name;
-        document.getElementById("visits").textContent = data.visits.toLocaleString() + " visits";
-        document.getElementById("thumb").src = data.thumbnail;
-      });
+    const endpoint = "https://script.google.com/macros/s/AKfycby9NojY1TH_fMEbaBHEIwB2ygwvJhRZS66Fl-pK8Q5nudCpmoz2b2bwsVpwwkMBwVuCBw/exec";
+
+    function updateCounter() {
+      fetch(endpoint)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            document.getElementById("name").textContent = "Error: " + data.error;
+            return;
+          }
+          document.getElementById("name").textContent = data.name;
+          document.getElementById("visits").textContent = data.visits.toLocaleString() + " visits";
+          document.getElementById("thumb").src = data.thumbnail;
+
+          const now = new Date().toLocaleTimeString();
+          document.getElementById("updateTime").textContent = "Last updated: " + now;
+        })
+        .catch(error => {
+          document.getElementById("name").textContent = "Fetch error";
+          console.error(error);
+        });
+    }
+
+    // Jalankan pertama kali
+    updateCounter();
+
+    // Lalu jalankan ulang tiap 30 detik
+    setInterval(updateCounter, 30000);
   </script>
 </body>
 </html>
