@@ -129,6 +129,12 @@
 </head>
 
 <body>
+
+<div id="youtubeLiveNotice" style="display:none; background: crimson; color: white; padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px;">
+  🔴 <a id="youtubeLiveLink" href="#" target="_blank" style="color: yellow;">Sedang LIVE di YouTube – Klik untuk menonton!</a>
+</div>
+
+
   <h1>🔥 Roblox Game Visit Leaderboard</h1>
 
   <!-- Input Place ID Manual -->
@@ -200,13 +206,32 @@
 
   <!-- Script -->
   <script>
-    const endpoint = "https://script.google.com/macros/s/AKfycbxSW4OrcUOFwC0agA2LrU3bthkYf0TU6IqbkgHI0C2tQ_vU_a3w3az9CTMqOfYZQ1WUVw/exec";
+    const endpoint = "https://script.google.com/macros/s/AKfycbw82oLRoQPb54tOAarKQmgNNEF2M48nyybCWnxkj_d1QcAlZpTw-lcwkfB5U3LltgbF4w/exec";
     const defaultPlaceIds = [
       "3187302798",
       "11399819772",
       "115326572683504",
       "115958813741074"
     ];
+
+
+function checkYouTubeLive() {
+  fetch(`${endpoint}?ytLive=1`)
+    .then(res => res.json())
+    .then(data => {
+      const yt = data.find(item => item.youtubeLive !== undefined);
+      if (yt && yt.youtubeLive && yt.youtubeVideoId) {
+        const videoUrl = `https://www.youtube.com/watch?v=${yt.youtubeVideoId}`;
+        document.getElementById("youtubeLiveLink").href = videoUrl;
+        document.getElementById("youtubeLiveNotice").style.display = "block";
+      } else {
+        document.getElementById("youtubeLiveNotice").style.display = "none";
+      }
+    })
+    .catch(err => console.error("Gagal cek YouTube Live:", err));
+}
+
+
 
     function getCurrentPlaceIds() {
       const saved = localStorage.getItem("customPlaceIds");
