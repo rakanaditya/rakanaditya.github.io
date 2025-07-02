@@ -133,7 +133,10 @@
 <div style="margin-bottom: 15px;">
   <input id="searchInput" type="text" placeholder="🔍 Search game..." 
          style="padding: 8px; border-radius: 6px; width: 250px; font-size: 14px;">
-</div>
+<button id="clearSearch" style="margin-left: 8px; padding: 8px 12px; border: none; border-radius: 6px; background: #e53935; color: white; font-weight: bold; cursor: pointer;">
+  ❌ Clear
+</button>
+
 
 
   <div id="countdownWrapper">
@@ -239,10 +242,19 @@
     loadLeaderboard();
     setInterval(updateCountdownUI, 1000);
 
-// Simpan ke localStorage saat mengetik
-document.getElementById("searchInput").addEventListener("input", function () {
+const searchInput = document.getElementById("searchInput");
+const clearButton = document.getElementById("clearSearch");
+
+searchInput.addEventListener("input", function () {
   const keyword = this.value.toLowerCase();
-  localStorage.setItem("lastSearch", keyword); // 💾 simpan
+  localStorage.setItem("lastSearch", keyword);
+
+  // Tampilkan / sembunyikan tombol ❌
+  if (keyword.length > 0) {
+    clearButton.classList.add("visible");
+  } else {
+    clearButton.classList.remove("visible");
+  }
 
   document.querySelectorAll(".game-card").forEach(card => {
     const name = card.querySelector(".game-name")?.textContent.toLowerCase() || "";
@@ -250,18 +262,14 @@ document.getElementById("searchInput").addEventListener("input", function () {
   });
 });
 
-// Saat halaman dimuat, isi pencarian terakhir
-window.addEventListener("DOMContentLoaded", () => {
-  const last = localStorage.getItem("lastSearch");
-  if (last) {
-    const input = document.getElementById("searchInput");
-    input.value = last;
+clearButton.addEventListener("click", function () {
+  searchInput.value = "";
+  localStorage.removeItem("lastSearch");
+  clearButton.classList.remove("visible");
 
-    // Tunggu leaderboard terisi dulu
-    setTimeout(() => {
-      input.dispatchEvent(new Event("input"));
-    }, 500); // sedikit delay agar card sudah siap
-  }
+  document.querySelectorAll(".game-card").forEach(card => {
+    card.style.display = "block";
+  });
 });
 
 
