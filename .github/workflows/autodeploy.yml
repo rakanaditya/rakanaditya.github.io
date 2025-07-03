@@ -1,0 +1,23 @@
+name: Auto Deploy Every 15 Minutes
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # setiap 15 menit
+  workflow_dispatch: # bisa juga dijalankan manual lewat GitHub
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Make a dummy change
+      run: |
+        echo "Last auto update at $(date -u)" > autodeploy.log
+        git config user.name "Auto Bot"
+        git config user.email "autobot@users.noreply.github.com"
+        git add autodeploy.log
+        git commit -m "🤖 Auto deploy: $(date -u)" || echo "No changes to commit"
+        git push origin main
