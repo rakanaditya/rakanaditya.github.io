@@ -57,6 +57,12 @@
 
 <script>
 const endpoint = "https://rakanaditya.github.io/api/data.js";
+
+fetch(endpoint)
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+
 const defaultPlaceIds = ["3187302798", "11399819772", "115326572683504", "115958813741074"];
 let previousRanks = {};
 const refreshInterval = 30;
