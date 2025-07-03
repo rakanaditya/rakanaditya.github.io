@@ -1,4 +1,16 @@
 export default async function handler(req, res) {
+  // ✅ CORS Header agar bisa diakses dari GitHub Pages
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // ✅ Tangani preflight OPTIONS request
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
+
+  // ❌ Tolak metode selain GET
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
@@ -13,10 +25,8 @@ export default async function handler(req, res) {
   }
 
   const gasUrl = `https://script.google.com/macros/s/AKfycbyk3W-3rLAzMifmbYH0GF8CXsh9afHS8wJ9gZch2SZ7447M2FDKXsqr9CDk_588PrDRyg/exec?${searchParams.toString()}`;
-
   const ytApiKey = process.env.YT_API_KEY;
   const ytChannelId = "UCEw2LeYmh2XQG_pgcdfPqHA";
-
   const ytUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${ytChannelId}&eventType=live&type=video&key=${ytApiKey}`;
 
   try {
@@ -28,7 +38,7 @@ export default async function handler(req, res) {
     const gasData = await gasRes.json();
     let youtube = { youtubeLive: false };
 
-    // Jika sedang live
+    // 🔴 Jika sedang live
     if (ytRes.ok) {
       const ytData = await ytRes.json();
       if (ytData.items && ytData.items.length > 0) {
@@ -49,28 +59,23 @@ export default async function handler(req, res) {
       };
     }
 
-   // Jika tidak sedang live, ambil video terbaru
-if (!youtube.youtubeLive) {
-  const latestUrl =
-    `https://www.googleapis.com/youtube/v3/search?part=snippet` +
-    `&channelId=${ytChannelId}` +
-    `&order=date&type=video&maxResults=1&key=${ytApiKey}`;
-  
-  const latestRes = await fetch(latestUrl);
-  if (latestRes.ok) {
-    const l = await latestRes.json();
-    if (l.items?.length) {
-      const v = l.items[0];
-      youtube.latestVideoId = v.id.videoId;
-      youtube.latestVideoTitle = v.snippet.title;
-      youtube.channelTitle = v.snippet.channelTitle;
-      youtube.youtubeLive = false;
+    // 📺 Jika tidak sedang live, ambil video terbaru
+    if (!youtube.youtubeLive) {
+      const latestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${ytChannelId}&order=date&type=video&maxResults=1&key=${ytApiKey}`;
+      const latestRes = await fetch(latestUrl);
+      if (latestRes.ok) {
+        const l = await latestRes.json();
+        if (l.items?.length) {
+          const v = l.items[0];
+          youtube.latestVideoId = v.id.videoId;
+          youtube.latestVideoTitle = v.snippet.title;
+          youtube.channelTitle = v.snippet.channelTitle;
+          youtube.youtubeLive = false;
+        }
+      }
     }
-  }
-}
 
-
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    // 🔁 Cache 60 detik
     res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=30");
 
     res.status(200).json({
