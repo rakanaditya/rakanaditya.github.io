@@ -1,127 +1,205 @@
-<!-- rakanaditya.github.io/website.html !-->
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Website Portfolio - Rakan Aditya</title>
+  <title>Portfolio - Rakan Aditya</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+    /* === Reset & Base === */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+    a {
+      color: #4dabf7;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    a:hover {
+      color: #74c0fc;
+    }
+
+    /* === Header === */
     header {
-      background: #222;
-      color: white;
-      padding: 20px;
+      background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
       text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-    h1, h2 {
-      margin: 10px 0;
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #ffffff;
     }
+    header p {
+      color: #aaa;
+      font-size: 1.1rem;
+    }
+
+    /* === Container & Cards === */
     .container {
-      padding: 20px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
     }
     .card {
-      background: white;
-      margin: 20px auto;
-      padding: 15px;
-      border-radius: 8px;
-      max-width: 800px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.5);
     }
     .card img {
       width: 100%;
-      max-height: 400px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 8px;
     }
-    .card a {
-      color: #007BFF;
-      text-decoration: none;
-      font-weight: bold;
+    .card-content {
+      padding: 18px;
+      flex: 1;
     }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .card p {
+      color: #bbb;
+      font-size: 0.95rem;
+    }
+
+    /* === About Section === */
     .about {
-      background: #ddd;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 30px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+    .about h2 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    .about p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
       padding: 20px;
-      border-radius: 8px;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
       margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Rakan Aditya</h1>
-    <p>Collection of Personal Projects & Websites</p>
+    <h1>Rakan Aditya Portofolio</h1>
+    <p>Personal Projects • Websites • Creative Works • Conten Creator</p>
   </header>
 
   <div class="container">
     <div class="card">
-      <h2>1. Website Roblox Leaderboard</h2>
-      <a href="https://roblox-leaderboard.vercel.app/" target="_blank">Visit Website</a>
-      <img src="https://api.microlink.io/?url=https://roblox-leaderboard.vercel.app/&screenshot=true&embed=screenshot.url" alt="Preview Roblox Leaderboard" />
-      <p>A website to display the visit leaderboard and live status of the Roblox game created using Google Apps Script and JavaScript frontend.</p>
+      <img src="https://api.microlink.io/?url=https://roblox-leaderboard.vercel.app/&screenshot=true&embed=screenshot.url" alt="Roblox Leaderboard" />
+      <div class="card-content">
+        <h2>Website Roblox Leaderboard</h2>
+        <p><a href="https://roblox-leaderboard.vercel.app/" target="_blank">Visit Website</a></p>
+        <p>Displays visit leaderboard and live status of Roblox games using Google Apps Script & JavaScript.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>2. Giveaway Picker</h2>
-      <a href="https://giveaway-picker-one.vercel.app/" target="_blank">Visit Website</a>
-      <img src="https://api.microlink.io/?url=https://giveaway-picker-one.vercel.app/&screenshot=true&embed=screenshot.url" alt="Preview Giveaway Picker" />
-      <p>A Google Sheet to Discord Webhook based raffle system, where users can enter giveaways by inputting numbers and a random winner system.</p>
+      <img src="https://api.microlink.io/?url=https://giveaway-picker-one.vercel.app/&screenshot=true&embed=screenshot.url" alt="Giveaway Picker" />
+      <div class="card-content">
+        <h2>Giveaway Picker</h2>
+        <p><a href="https://giveaway-picker-one.vercel.app/" target="_blank">Visit Website</a></p>
+        <p>Raffle system connected to Google Sheets & Discord Webhooks with random winner logic.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>3. GitHub Profile</h2>
-      <a href="https://rakanaditya.github.io/" target="_blank">View Profile GitHub</a>
       <img src="https://api.microlink.io/?url=https://rakanaditya.github.io/&screenshot=true&embed=screenshot.url" alt="GitHub Page" />
-      <p>GitHub Page is a static page that serves as a public profile and project center for Rakan Aditya.</p>
+      <div class="card-content">
+        <h2>GitHub Profile</h2>
+        <p><a href="https://rakanaditya.github.io/" target="_blank">View Profile</a></p>
+        <p>A public GitHub Page serving as portfolio and project hub.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>4–6. Channel YouTube</h2>
-      <p><a href="https://www.youtube.com/@AdityaRB/" target="_blank">YouTube: AdityaRB</a></p>
-      <p><a href="https://www.youtube.com/@RakanAditya" target="_blank">YouTube: RakanAditya</a></p>
-      <p><a href="https://www.youtube.com/@AdityaSenpai/" target="_blank">YouTube: Aditya</a></p>
       <img src="https://i.imgur.com/WlXZuPm.jpeg" alt="YouTube Preview" />
-      <p>Contains creative content about Roblox, programming, anime video editing, memes, and live streaming content.</p>
+      <div class="card-content">
+        <h2>YouTube Channels</h2>
+        <p><a href="https://www.youtube.com/@AdityaRB/" target="_blank">AdityaRB</a> | 
+           <a href="https://www.youtube.com/@RakanAditya" target="_blank">RakanAditya</a> | 
+           <a href="https://www.youtube.com/@AdityaSenpai/" target="_blank">Aditya</a></p>
+        <p>Content about Roblox, coding, anime editing, memes, and live streams.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>7. Complete Social Media</h2>
-      <a href="https://heylink.me/RakanAditya/" target="_blank">View All Social Media</a>
-      <p>Connect with all Rakan Aditya accounts on various platforms via heylink.</p>
+      <div class="card-content">
+        <h2>Social Media</h2>
+        <p><a href="https://heylink.me/RakanAditya/" target="_blank">See All Platforms</a></p>
+        <p>Connect with me on TikTok, Instagram, Discord, Twitch, and more.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>8. Donasi & Support Creator</h2>
-      <p><a href="https://saweria.co/RakanAditya" target="_blank">Saweria</a> | <a href="https://trakteer.id/RakanAditya" target="_blank">Trakteer</a></p>
-      <p><a href="https://patreon.com/RakanAditya" target="_blank">Patreon</a></p>
-      <p>Support creators through the donation platform and become part of an exclusive community.</p>
+      <div class="card-content">
+        <h2>Support & Donation</h2>
+        <p><a href="https://saweria.co/RakanAditya" target="_blank">Saweria</a> | 
+           <a href="https://trakteer.id/RakanAditya" target="_blank">Trakteer</a> | 
+           <a href="https://patreon.com/RakanAditya" target="_blank">Patreon</a></p>
+        <p>Support my creative works and join the exclusive community.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>9. Novels & Life Stories</h2>
-      <p><a href="https://noveltoon.mobi/id/share/3904613" target="_blank">My True Story on NovelToon</a></p>
-      <p><a href="https://www.webnovel.com/book/32681338808360405" target="_blank">English Version Anime Webnovel</a></p>
-      <p><a href="https://www.wattpad.com/1500211856" target="_blank">Reincarnation Novel on Wattpad</a> - <em>Shinsei na Hikari: Saisei Maō Tatakaidi</em></p>
-    </div>
+      <div class="card-content">
+        <h2>Novels & Stories</h2>
 
-    <div class="about">
-      <h2>About Rakan Aditya</h2>
-      <p><strong>Rakan Aditya</strong> 🎮 Rakan Aditya is an Indonesian YouTube gamer who actively shares content about games like Minecraft, Dota 2, Mobile Legends, and others. He is also known on various social platforms like TikTok, Instagram, and Twitch, where he frequently uploads edited videos, gameplays, and other entertainment content.
-📱 Some interesting things about Rakan Aditya:
-
-Active on various social media platforms: YouTube, TikTok, Instagram, Discord, and Twitch
-
-Hobby: Playing and editing video games, especially Mobile Legends
-
-Frequently interacts with his followers through live streams and online communities
-
-Receives support from fans through platforms like Saweria and Trakteer.
-</p>
+        <p><a href="https://noveltoon.mobi/id/share/3904613" target="_blank">NovelToon</a> | 
+           <a href="https://www.webnovel.com/book/32681338808360405" target="_blank">Webnovel</a> |
+<a href=" https://www.royalroad.com/fiction/129464/battle-of-the-demon-king-awakening-of-the-holy/" target="_blank">RoyalRoad</a> |
+           <a href="https://www.wattpad.com/1500211856" target="_blank">Wattpad</a></p>
+        <p>Fantasy stories & life journey in multiple platforms.</p>
+      </div>
     </div>
   </div>
+
+  <div class="about">
+    <h2>About Rakan Aditya</h2>
+    <p><strong>Rakan Aditya</strong> 🎮 is an Indonesian gamer & content creator. Active on YouTube, TikTok, Instagram, Discord, and Twitch. Loves editing, gaming, and interacting with fans through live streams. Supported by community via Saweria & Trakteer.</p>
+  </div>
+
+  <footer>
+    © 2025 Rakan Aditya
+  </footer>
 </body>
 </html>
