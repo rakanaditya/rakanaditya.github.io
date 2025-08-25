@@ -116,10 +116,10 @@ body {
 /* Tombol toggle */
 #toggleDarkMode {
     position: fixed;
-    top: 20px;
+    bottom: 15px;
     right: 20px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
     border-radius: 8px;
     background: linear-gradient(90deg, #333, #444);
@@ -167,7 +167,16 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     animation: fadeIn 1s ease-in-out;
+    text-align: center;
 }
+
+.profile-container p, .profile-side p {
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+
 
 /* Foto profil */
 .profile-img {
@@ -337,4 +346,21 @@ body {
         box-shadow: 0 0 5px #5865F2, 0 0 10px #5865F2, 0 0 15px #5865F2;
         transform: scale(1.05) rotate(360deg);
     }
+}
+
+
+.logo button {
+  margin-left: auto;
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.logo button:hover {
+  background: #ff00ff;
+  color: black;
+  box-shadow: 0 0 15px #ff00ff;
 }
