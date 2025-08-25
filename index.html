@@ -2,26 +2,192 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profil GitHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* --- NEON TOKYO STYLE --- */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0f, #1a1a2e);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(2px);
+    }
+
+    nav {
+      width: 100%;
+      padding: 15px 30px;
+      background: rgba(10, 10, 25, 0.85);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #ff00ff;
+      box-shadow: 0 0 15px #ff00ff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00fff7;
+      text-shadow: 0 0 8px #00fff7, 0 0 15px #00e1ff;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #ff00ff;
+      left: 0;
+      bottom: -5px;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    nav ul li a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 8px #ff00ff, 0 0 15px #ff00ff;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .neon-glow {
+      border-radius: 50%;
+      box-shadow: 0 0 15px #00fff7, 0 0 25px #ff00ff, 0 0 35px #00e1ff;
+    }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7, 0 0 20px #ff00ff;
+    }
+
+    a.github-link {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 15px;
+      border: 2px solid #ff00ff;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      border-radius: 5px;
+      transition: 0.3s;
+      text-shadow: 0 0 8px #ff00ff;
+    }
+
+    a.github-link:hover {
+      background: #ff00ff;
+      color: #0a0a0f;
+      box-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff;
+    }
+
+    .profile-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .bio, .portofolio, .stats, .chart-container, .contact-section {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: rgba(10, 10, 25, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00fff7;
+    }
+
+    button, .contact-form button {
+      background: transparent;
+      border: 2px solid #ff00ff;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: 0.3s;
+    }
+
+    button:hover, .contact-form button:hover {
+      background: #ff00ff;
+      color: #0a0a0f;
+      box-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #00fff7;
+      color: #fff;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- 🌃 NAVBAR NEON -->
+  <nav>
+    <div class="logo">PROFILE GITHUB</div>
+    <ul>
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#stats">Statistik</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+  </nav>
+
   <button id="toggleDarkMode">🌙 Dark Mode</button>
 
-<div class="profile-wrapper">
-  <div class="profile-container">
-    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDhmbmN2OTZ1eWZ4bjB4NWNwZjN6MXhpb3NzdXB3eXc3enE5OHQyMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFDrI2s4RqlIQxV0G0/giphy.gif" alt="Foto Profil" class="profile-img neon-glow" />
-    <h1>Rakan Aditya</h1>
-    <p>Currently working on a roblox game project</p>
-    <a href="https://www.roblox.com/games/115326572683504/Astralis-Sanctum-TESTING-v-2" class="github-link" target="_blank">Visit Game</a>
-    <a href="https://github.com/rakanaditya" class="github-link" target="_blank">Visit GitHub</a>
-  </div>
+  <div class="profile-wrapper">
+    <div class="profile-container">
+      <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDhmbmN2OTZ1eWZ4bjB4NWNwZjN6MXhpb3NzdXB3eXc3enE5OHQyMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFDrI2s4RqlIQxV0G0/giphy.gif" alt="Foto Profil" class="profile-img neon-glow" />
+      <h1>Rakan Aditya</h1>
+      <p>Currently working on a roblox game project</p>
+      <a href="https://www.roblox.com/games/115326572683504/Astralis-Sanctum-TESTING-v-2" class="github-link" target="_blank">Visit Game</a>
+      <a href="https://github.com/rakanaditya" class="github-link" target="_blank">Visit GitHub</a>
+    </div>
 
-<!-- Profil Tambahan -->
-    <div class="profile-side ">
+    <div class="profile-side">
       <img src="https://i.pinimg.com/564x/f3/f5/ca/f3f5ca9bba99dbe5bccf866254639003.jpg" alt="Foto Profil Tambahan" class="profile-img neon-glow" />
       <h1>Aditya BOT</h1>
       <p>Bot Server Security Aditya</p>
@@ -30,20 +196,18 @@
     </div>
   </div>
 
-  <div class="bio">
+  <div id="about" class="bio">
     <h2>About me</h2>
     <p>I am a lazy coder</p>
   </div>
 
-<!-- roblox Tambahan -->
-    <div class="portofolio">
-      <h1>Aditya Full Website Info</h1>
-      <p>About all Aditya</p>
-     <a href="http://rakanaditya.github.io/website.html" class="github-link" target="_blank">Visit portofolio</a>
-    </div>
+  <div class="portofolio">
+    <h1>Aditya Full Website Info</h1>
+    <p>About all Aditya</p>
+    <a href="http://rakanaditya.github.io/website.html" class="github-link" target="_blank">Visit portofolio</a>
   </div>
 
-  <div class="stats">
+  <div id="stats" class="stats">
     <h2>Statistik GitHub</h2>
     <p>Repositori: <span id="repos">...</span></p>
     <p>Follower: <span id="followers">...</span></p>
@@ -56,18 +220,14 @@
     <canvas id="repoChart" width="400" height="200"></canvas>
   </div>
 
-  <section class="contact-section">
+  <section id="contact" class="contact-section">
     <h2>Contact me</h2>
-
     <form action="https://formsubmit.co/rakanadityabis@gmail.com" method="POST" class="contact-form">
       <input type="text" name="name" placeholder="Your name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Write a message here..." rows="5" required></textarea>
-
-      <!-- Anti-spam & redirect -->
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value="https://rakanaditya.github.io/thanks.html" />
-
       <button type="submit">Send message</button>
     </form>
   </section>
