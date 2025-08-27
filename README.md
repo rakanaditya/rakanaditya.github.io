@@ -4,7 +4,7 @@ I'm a passionate developer working on Roblox projects, scripting with Lua, and b
 
 ---
 
-**Discord Status:**  Offline
+**Discord Status:**  Online
 
 ---
 
