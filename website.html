@@ -113,22 +113,158 @@ header p{
 
 /* GRID */
 
+/* ===============================
+   Responsive Grid Layout
+================================== */
+
 .container{
-
-    max-width:1200px;
-
+    width:100%;
+    max-width:1400px;
     margin:45px auto;
-
     padding:20px;
 
     display:grid;
-
     gap:28px;
 
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    /* Desktop */
+    grid-template-columns:repeat(4,1fr);
+}
+/* ==================================
+   Responsive
+================================== */
+
+/* Laptop Besar */
+@media (max-width:1400px){
+
+.container{
+    max-width:1200px;
+    grid-template-columns:repeat(3,1fr);
+}
 
 }
 
+/* Laptop */
+@media (max-width:1024px){
+
+.container{
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+header h1{
+    font-size:2.5rem;
+}
+
+}
+
+/* Tablet */
+@media (max-width:768px){
+
+.container{
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    padding:15px;
+}
+
+.card img{
+    height:170px;
+}
+
+.card-content{
+    padding:18px;
+}
+
+header{
+    padding:40px 15px;
+}
+
+header h1{
+    font-size:2rem;
+}
+
+header p{
+    font-size:1rem;
+}
+
+.about{
+    margin:30px 15px;
+    padding:25px;
+}
+
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+.container{
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.card{
+    border-radius:18px;
+}
+
+.card img{
+    height:200px;
+}
+
+.card h2{
+    font-size:1.25rem;
+}
+
+.card p{
+    font-size:.95rem;
+}
+
+.card a{
+    display:block;
+    width:100%;
+    text-align:center;
+    margin:8px 0;
+}
+
+.about{
+    margin:25px 10px;
+    padding:20px;
+}
+
+.about h2{
+    font-size:1.6rem;
+}
+
+footer{
+    padding:18px;
+    font-size:.9rem;
+}
+
+}
+
+/* HP kecil */
+@media (max-width:380px){
+
+header h1{
+    font-size:1.6rem;
+}
+
+.card img{
+    height:170px;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card h2{
+    font-size:1.1rem;
+}
+
+.card p{
+    font-size:.9rem;
+}
+
+}
+   
 /* CARD */
 
 .card{
@@ -381,11 +517,184 @@ header h1{
 
 }
 
+}
+   /* ===================================
+      Japanese Sakura Falling Effect
+=================================== */
+
+.sakura{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:999;
+}
+
+.sakura span{
+
+    position:absolute;
+
+    top:-10%;
+
+    width:18px;
+    height:18px;
+
+    background:linear-gradient(145deg,#ffd7e9,#ff9fc7);
+
+    border-radius:70% 0 70% 0;
+
+    opacity:.9;
+
+    box-shadow:
+    0 0 10px rgba(255,180,220,.6);
+
+    animation:
+    fall linear infinite,
+    sway ease-in-out infinite,
+    rotatePetal linear infinite;
+
+}
+
+/* Posisi */
+
+.sakura span:nth-child(1){
+left:3%;
+animation-duration:12s,4s,8s;
+animation-delay:0s;
+}
+
+.sakura span:nth-child(2){
+left:12%;
+animation-duration:15s,5s,10s;
+animation-delay:2s;
+}
+
+.sakura span:nth-child(3){
+left:22%;
+animation-duration:14s,6s,9s;
+animation-delay:1s;
+}
+
+.sakura span:nth-child(4){
+left:31%;
+animation-duration:17s,4s,8s;
+animation-delay:5s;
+}
+
+.sakura span:nth-child(5){
+left:40%;
+animation-duration:13s,5s,9s;
+animation-delay:2s;
+}
+
+.sakura span:nth-child(6){
+left:50%;
+animation-duration:16s,6s,11s;
+animation-delay:3s;
+}
+
+.sakura span:nth-child(7){
+left:59%;
+animation-duration:14s,4s,8s;
+animation-delay:6s;
+}
+
+.sakura span:nth-child(8){
+left:68%;
+animation-duration:18s,5s,12s;
+animation-delay:1s;
+}
+
+.sakura span:nth-child(9){
+left:77%;
+animation-duration:15s,6s,10s;
+animation-delay:4s;
+}
+
+.sakura span:nth-child(10){
+left:86%;
+animation-duration:16s,5s,9s;
+animation-delay:2s;
+}
+
+.sakura span:nth-child(11){
+left:93%;
+animation-duration:13s,4s,8s;
+animation-delay:5s;
+}
+
+.sakura span:nth-child(12){
+left:98%;
+animation-duration:19s,6s,13s;
+animation-delay:3s;
+}
+
+/* Jatuh */
+
+@keyframes fall{
+
+    from{
+        transform:translateY(-120px);
+    }
+
+    to{
+        transform:translateY(120vh);
+    }
+
+}
+
+/* Goyang */
+
+@keyframes sway{
+
+    0%{
+        margin-left:-25px;
+    }
+
+    50%{
+        margin-left:30px;
+    }
+
+    100%{
+        margin-left:-25px;
+    }
+
+}
+
+/* Berputar */
+
+@keyframes rotatePetal{
+
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+
 }‎
 ‎
 ‎  </style>
 ‎</head>
 ‎<body>
+
+<div class="sakura">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+   
 ‎  <header>
 ‎    <h1>Rakan Aditya Portofolio</h1>
 ‎    <p>Personal Projects • Websites • Creative Works • Conten Creator</p>
