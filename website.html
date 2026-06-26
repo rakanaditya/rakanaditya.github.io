@@ -1,284 +1,303 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio - Rakan Aditya</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-   /* === Reset & Base === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(-45deg, #0f0f0f, #1a0033, #330066, #000);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  color: #e0e0ff;
-  line-height: 1.6;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-a {
-  color: #00f0ff;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-a:hover {
-  color: #ff00ff;
-  text-shadow: 0 0 8px #ff00ff;
-}
-
-/* === Header === */
-header {
-  background: linear-gradient(135deg, #1a0033, #330066);
-  text-align: center;
-  padding: 50px 20px;
-  box-shadow: 0 0 20px #00f0ff;
-  animation: fadeIn 1.5s ease forwards;
-  opacity: 0;
-}
-header h1 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  color: #00f0ff;
-  text-shadow: 0 0 10px #00f0ff;
-}
-header p {
-  color: #ccc;
-  font-size: 1.2rem;
-  text-shadow: 0 0 6px #ff00ff;
-}
-
-/* === Container & Cards === */
-.container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-}
-.card {
-  background: #1a1a1a;
-  border: 2px solid #00f0ff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 0 20px #00f0ff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease forwards;
-}
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 30px #ff00ff;
-}
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 2px solid #00f0ff;
-}
-.card-content {
-  padding: 20px;
-  flex: 1;
-}
-.card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: #ff00ff;
-  text-shadow: 0 0 6px #ff00ff;
-}
-.card p {
-  color: #ccc;
-  font-size: 1rem;
-}
-
-/* === About Section === */
-.about {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 30px;
-  background: linear-gradient(135deg, #1a0033, #330066);
-  border-radius: 16px;
-  box-shadow: 0 0 20px #00f0ff;
-  animation: fadeIn 2s ease forwards;
-  opacity: 0;
-}
-.about h2 {
-  margin-bottom: 15px;
-  font-size: 1.6rem;
-  color: #00f0ff;
-  text-shadow: 0 0 8px #00f0ff;
-}
-.about p {
-  color: #e0e0ff;
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-/* === Footer === */
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #888;
-  font-size: 0.9rem;
-  border-top: 1px solid #222;
-  margin-top: 40px;
-  text-shadow: 0 0 4px #00f0ff;
-  animation: fadeIn 2.5s ease forwards;
-  opacity: 0;
-}
-
-/* === Animations === */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Rakan Aditya Portofolio</h1>
-    <p>Personal Projects • Websites • Creative Works • Conten Creator</p>
-  </header>
-
-  <div class="container">
-    <div class="card">
-      <img src="https://api.microlink.io/?url=https://roblox-leaderboard.vercel.app/&screenshot=true&embed=screenshot.url" alt="Roblox Leaderboard" />
-      <div class="card-content">
-        <h2>Website Roblox Leaderboard</h2>
-        <p><a href="https://roblox-leaderboard.vercel.app/" target="_blank">Visit Website</a></p>
-        <p>Displays visit leaderboard and live status of Roblox games using Google Apps Script & JavaScript.</p>
-      </div>
-    </div>
-
- <div class="card"><!-- NEW CARD -->
-  <img src="https://api.microlink.io/?url=https://therake-leaderboard.vercel.app/&screenshot=true&embed=screenshot.url" alt="The Rake Leaderboard" />
-  <div class="card-content">
-    <h2>Game The Rake Leaderboard</h2>
-    <p><a href="https://therake-leaderboard.vercel.app/" target="_blank">Visit Website</a></p>
-    <p>Leaderboard tracker for Roblox horror game <em>The Rake</em> with live data and player stats reset 1-5 minutes.</p>
-  </div>
-</div>
-
-
-    <div class="card">
-      <img src="https://api.microlink.io/?url=https://giveaway-picker-one.vercel.app/&screenshot=true&embed=screenshot.url" alt="Giveaway Picker" />
-      <div class="card-content">
-        <h2>Giveaway Picker</h2>
-        <p><a href="https://giveaway-picker-one.vercel.app/" target="_blank">Visit Website</a></p>
-        <p>Raffle system connected to Google Sheets & Discord Webhooks with random winner logic.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://api.microlink.io/?url=https://rakanaditya.github.io/&screenshot=true&embed=screenshot.url" alt="GitHub Page" />
-      <div class="card-content">
-        <h2>GitHub Profile</h2>
-        <p><a href="https://rakanaditya.github.io/" target="_blank">View Profile</a></p>
-        <p>A public GitHub Page serving as portfolio and project hub.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://i.imgur.com/WlXZuPm.jpeg" alt="YouTube Preview" />
-      <div class="card-content">
-        <h2>YouTube Channels</h2>
-        <p><a href="https://www.youtube.com/@AdityaRB/" target="_blank">AdityaRB</a> | 
-           <a href="https://www.youtube.com/@RakanAditya" target="_blank">RakanAditya</a> | 
-           <a href="https://www.youtube.com/@AdityaSenpai/" target="_blank">Aditya</a></p>
-        <p>Content about Roblox, coding, anime editing, memes, and live streams.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-content">
-        <h2>Social Media</h2>
-        <p><a href="https://heylink.me/RakanAditya/" target="_blank">See All Platforms</a></p>
-        <p>Connect with me on TikTok, Instagram, Discord, Twitch, and more.</p>
-<img src="https://i.imgur.com/uXIMb5P.png" alt="About Social media">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-content">
-        <h2>Support & Donation</h2>
-        <p><a href="https://saweria.co/RakanAditya" target="_blank">Saweria</a> | 
-           <a href="https://trakteer.id/RakanAditya" target="_blank">Trakteer</a> |
-           <a href="https://sociabuzz.com/rakanadityaofficial" target="_blank">Sociabuzz</a> |
-           <a href="https://www.roblox.com/games/5918410179/Pls-Donate-Aditya#!/store" target="_blank">ROBUX Donate</a> |
-           <a href="https://patreon.com/RakanAditya" target="_blank">Patreon</a></p>
-        <p>Support my creative works and join the exclusive community.</p>
-        <img src="https://i.imgur.com/dZcv7eG.png" alt="About Novels">
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="card-content">
-        <h2>Game Rakan Aditya ROBLOX</h2>
-        <p>
-          🎮 <a href="https://www.roblox.com/games/3187302798/Rumah-Hantu-Indonesia-V-1" target="_blank">Rumah Hantu Indonesia</a><br>
-          👹 <a href="https://www.roblox.com/games/11399819772/The-Rake-REMASTERED-Indonesia" target="_blank">The Rake Remastered</a><br>
-          🏰 <a href="https://www.roblox.com/games/115958813741074/Tower-Obby-Easy" target="_blank">Tower Obby Easy</a><br>
-          🐱 <a href="https://www.roblox.com/games/116925158649823/Cat-Escape" target="_blank">Cat Escape!</a><br>
-          ✨ <a href="https://www.roblox.com/games/115326572683504/Astralis-Sanctum-TESTING-v-2" target="_blank">Astralis Sanctum</a><br>
-          💸 <a href="https://www.roblox.com/games/5918410179/Pls-Donate-Aditya" target="_blank">Pls Donate Aditya</a><br>
-          🛡️ <a href="https://www.roblox.com/games/16768824766/Emak-Defense-Simulator" target="_blank">Emak Defense Simulator</a>
-        </p>
-        <p>Koleksi game Roblox buatan <strong>Rakan Aditya</strong> mulai dari horror, obby, simulator, hingga social donation.</p>
-        <img src="https://i.imgur.com/RlMkR3N.png" alt="About Games roblox studio">
-      </div>
-    </div>
-
-
-
-    <div class="card">
-      <div class="card-content">
-        <h2>Novels & Stories</h2>
-
-        <p><a href="https://noveltoon.mobi/id/share/3904613" target="_blank">NovelToon</a> | 
-           <a href="https://www.webnovel.com/book/32681338808360405" target="_blank">Webnovel</a> |
-<a href=" https://www.royalroad.com/fiction/129464/battle-of-the-demon-king-awakening-of-the-holy/" target="_blank">RoyalRoad</a> |
-           <a href="https://www.wattpad.com/1500211856" target="_blank">Wattpad</a></p>
-        <p>Fantasy stories & life journey in multiple platforms.</p>
-        <img src="https://i.imgur.com/UP6wgmx.png" alt="About Novels">
-
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="about">
-    <h2>About Rakan Aditya</h2>
-    <p><strong>Rakan Aditya</strong> 🎮 is an Indonesian gamer & content creator. Active on YouTube, TikTok, Instagram, Discord, and Twitch. Loves editing, gaming, and interacting with fans through live streams. Supported by community via Saweria & Trakteer.</p>
-  <img src="https://i.imgur.com/7as9NtO.png" alt="About Rakan Aditya">
-
-</div>
-
-  <footer>
-    © 2025 Rakan Aditya
-  </footer>
-</body>
-</html>
+‎<!DOCTYPE html>
+‎<html lang="id">
+‎<head>
+‎  <meta charset="UTF-8" />
+‎  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+‎  <title>Portfolio - Rakan Aditya</title>
+‎  <!-- Google Fonts -->
+‎  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+‎  <style>
+‎   /* === Reset & Base === */
+‎* {
+‎  margin: 0;
+‎  padding: 0;
+‎  box-sizing: border-box;
+‎}
+‎body {
+‎  font-family: 'Poppins', sans-serif;
+‎  background: linear-gradient(-45deg, #0f0f0f, #1a0033, #330066, #000);
+‎  background-size: 400% 400%;
+‎  animation: gradientShift 15s ease infinite;
+‎  color: #e0e0ff;
+‎  line-height: 1.6;
+‎}
+‎@keyframes gradientShift {
+‎  0% { background-position: 0% 50%; }
+‎  50% { background-position: 100% 50%; }
+‎  100% { background-position: 0% 50%; }
+‎}
+‎a {
+‎  color: #00f0ff;
+‎  text-decoration: none;
+‎  transition: 0.3s ease;
+‎}
+‎a:hover {
+‎  color: #ff00ff;
+‎  text-shadow: 0 0 8px #ff00ff;
+‎}
+‎
+‎/* === Header === */
+‎header {
+‎  background: linear-gradient(135deg, #1a0033, #330066);
+‎  text-align: center;
+‎  padding: 50px 20px;
+‎  box-shadow: 0 0 20px #00f0ff;
+‎  animation: fadeIn 1.5s ease forwards;
+‎  opacity: 0;
+‎}
+‎header h1 {
+‎  font-size: 2.8rem;
+‎  font-weight: 600;
+‎  color: #00f0ff;
+‎  text-shadow: 0 0 10px #00f0ff;
+‎}
+‎header p {
+‎  color: #ccc;
+‎  font-size: 1.2rem;
+‎  text-shadow: 0 0 6px #ff00ff;
+‎}
+‎
+‎/* === Container & Cards === */
+‎.container {
+‎  max-width: 1100px;
+‎  margin: 40px auto;
+‎  padding: 0 20px;
+‎  display: grid;
+‎  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+‎  gap: 25px;
+‎}
+‎.card {
+‎  background: #1a1a1a;
+‎  border: 2px solid #00f0ff;
+‎  border-radius: 16px;
+‎  overflow: hidden;
+‎  box-shadow: 0 0 20px #00f0ff;
+‎  transition: transform 0.3s ease, box-shadow 0.3s ease;
+‎  display: flex;
+‎  flex-direction: column;
+‎  opacity: 0;
+‎  transform: translateY(30px);
+‎  animation: fadeUp 1s ease forwards;
+‎}
+‎.card:hover {
+‎  transform: translateY(-8px);
+‎  box-shadow: 0 0 30px #ff00ff;
+‎}
+‎.card img {
+‎  width: 100%;
+‎  height: 200px;
+‎  object-fit: cover;
+‎  border-bottom: 2px solid #00f0ff;
+‎}
+‎.card-content {
+‎  padding: 20px;
+‎  flex: 1;
+‎}
+‎.card h2 {
+‎  font-size: 1.4rem;
+‎  margin-bottom: 10px;
+‎  color: #ff00ff;
+‎  text-shadow: 0 0 6px #ff00ff;
+‎}
+‎.card p {
+‎  color: #ccc;
+‎  font-size: 1rem;
+‎}
+‎
+‎/* === About Section === */
+‎.about {
+‎  max-width: 900px;
+‎  margin: 60px auto;
+‎  padding: 30px;
+‎  background: linear-gradient(135deg, #1a0033, #330066);
+‎  border-radius: 16px;
+‎  box-shadow: 0 0 20px #00f0ff;
+‎  animation: fadeIn 2s ease forwards;
+‎  opacity: 0;
+‎}
+‎.about h2 {
+‎  margin-bottom: 15px;
+‎  font-size: 1.6rem;
+‎  color: #00f0ff;
+‎  text-shadow: 0 0 8px #00f0ff;
+‎}
+‎.about p {
+‎  color: #e0e0ff;
+‎  font-size: 1rem;
+‎  line-height: 1.7;
+‎}
+‎
+‎/* === Footer === */
+‎footer {
+‎  text-align: center;
+‎  padding: 20px;
+‎  color: #888;
+‎  font-size: 0.9rem;
+‎  border-top: 1px solid #222;
+‎  margin-top: 40px;
+‎  text-shadow: 0 0 4px #00f0ff;
+‎  animation: fadeIn 2.5s ease forwards;
+‎  opacity: 0;
+‎}
+‎
+‎/* === Animations === */
+‎@keyframes fadeIn {
+‎  to {
+‎    opacity: 1;
+‎  }
+‎}
+‎@keyframes fadeUp {
+‎  to {
+‎    opacity: 1;
+‎    transform: translateY(0);
+‎  }
+‎}
+‎
+‎
+‎  </style>
+‎</head>
+‎<body>
+‎  <header>
+‎    <h1>Rakan Aditya Portofolio</h1>
+‎    <p>Personal Projects • Websites • Creative Works • Conten Creator</p>
+‎  </header>
+‎
+‎  <div class="container">
+‎    <div class="card">
+‎      <img src="https://api.microlink.io/?url=https://roblox-leaderboard.vercel.app/&screenshot=true&embed=screenshot.url" alt="Roblox Leaderboard" />
+‎      <div class="card-content">
+‎        <h2>Website Roblox Leaderboard</h2>
+‎        <p><a href="https://roblox-leaderboard.vercel.app/" target="_blank">Visit Website</a></p>
+‎        <p>Displays visit leaderboard and live status of Roblox games using Google Apps Script & JavaScript.</p>
+‎      </div>
+‎    </div>
+‎
+‎ <div class="card"><!-- NEW CARD -->
+‎  <img src="https://api.microlink.io/?url=https://therake-leaderboard.vercel.app/&screenshot=true&embed=screenshot.url" alt="The Rake Leaderboard" />
+‎  <div class="card-content">
+‎    <h2>Game The Rake Leaderboard</h2>
+‎    <p><a href="https://therake-leaderboard.vercel.app/" target="_blank">Visit Website</a></p>
+‎    <p>Leaderboard tracker for Roblox horror game <em>The Rake</em> with live data and player stats reset 1-5 minutes.</p>
+‎  </div>
+‎</div>
+‎
+‎
+‎    <div class="card">
+‎      <img src="https://api.microlink.io/?url=https://giveaway-picker-one.vercel.app/&screenshot=true&embed=screenshot.url" alt="Giveaway Picker" />
+‎      <div class="card-content">
+‎        <h2>Giveaway Picker</h2>
+‎        <p><a href="https://giveaway-picker-one.vercel.app/" target="_blank">Visit Website</a></p>
+‎        <p>Raffle system connected to Google Sheets & Discord Webhooks with random winner logic.</p>
+‎      </div>
+‎    </div>
+‎
+‎        <div class="card">
+‎      <img src="https://api.microlink.io/?url=https://gacha-waifu-ten.vercel.app/&screenshot=true&embed=screenshot.url" alt="Gacha Waifu" />
+‎      <div class="card-content">
+‎        <h2>Gacha Waifu</h2>
+‎        <p><a href="https://gacha-waifu-ten.vercel.app/" target="_blank">Visit Website</a></p>
+‎        <p>Gacha Roll System Your Waifu</p>
+‎      </div>
+‎        </div>
+‎
+‎    <div class="card">
+‎      <img src="https://api.microlink.io/?url=https://fun-fact-kappa.vercel.app/&screenshot=true&embed=screenshot.url" alt="FunFacts Website" />
+‎      <div class="card-content">
+‎        <h2>FunFacts Website</h2>
+‎        <p><a href="https://fun-fact-kappa.vercel.app/" target="_blank">Visit Website</a></p>
+‎        <p>Sebuah website banyak kata kata FunFacts.</p>
+‎      </div>
+‎    </div>
+‎
+‎    <div class="card">
+‎      <img src="https://api.microlink.io/?url=https://rakanaditya.github.io/&screenshot=true&embed=screenshot.url" alt="GitHub Page" />
+‎      <div class="card-content">
+‎        <h2>GitHub Profile</h2>
+‎        <p><a href="https://rakanaditya.github.io/" target="_blank">View Profile</a></p>
+‎        <p>A public GitHub Page serving as portfolio and project hub.</p>
+‎      </div>
+‎    </div>
+‎
+‎    <div class="card">
+‎      <img src="https://i.imgur.com/WlXZuPm.jpeg" alt="YouTube Preview" />
+‎      <div class="card-content">
+‎        <h2>YouTube Channels</h2>
+‎        <p><a href="https://www.youtube.com/@AdityaRB/" target="_blank">AdityaRB</a> | 
+‎           <a href="https://www.youtube.com/@RakanAditya" target="_blank">RakanAditya</a> | 
+‎           <a href="https://www.youtube.com/@AdityaSenpai/" target="_blank">Aditya</a></p>
+‎        <p>Content about Roblox, coding, anime editing, memes, and live streams.</p>
+‎      </div>
+‎    </div>
+‎
+‎    <div class="card">
+‎      <div class="card-content">
+‎        <h2>Social Media</h2>
+‎        <p><a href="https://heylink.me/RakanAditya/" target="_blank">See All Platforms</a></p>
+‎        <p>Connect with me on TikTok, Instagram, Discord, Twitch, and more.</p>
+‎<img src="https://i.imgur.com/uXIMb5P.png" alt="About Social media">
+‎      </div>
+‎    </div>
+‎
+‎    <div class="card">
+‎      <div class="card-content">
+‎        <h2>Support & Donation</h2>
+‎        <p><a href="https://saweria.co/RakanAditya" target="_blank">Saweria</a> | 
+‎           <a href="https://trakteer.id/RakanAditya" target="_blank">Trakteer</a> |
+‎           <a href="https://sociabuzz.com/rakanadityaofficial" target="_blank">Sociabuzz</a> |
+‎           <a href="https://www.roblox.com/games/5918410179/Pls-Donate-Aditya#!/store" target="_blank">ROBUX Donate</a> |
+‎           <a href="https://patreon.com/RakanAditya" target="_blank">Patreon</a></p>
+‎        <p>Support my creative works and join the exclusive community.</p>
+‎        <img src="https://i.imgur.com/dZcv7eG.png" alt="About Novels">
+‎      </div>
+‎    </div>
+‎
+‎
+‎    <div class="card">
+‎      <div class="card-content">
+‎        <h2>Game Rakan Aditya ROBLOX</h2>
+‎        <p>
+‎          🎮 <a href="https://www.roblox.com/games/3187302798/Rumah-Hantu-Indonesia-V-1" target="_blank">Rumah Hantu Indonesia</a><br>
+‎          👹 <a href="https://www.roblox.com/games/11399819772/The-Rake-REMASTERED-Indonesia" target="_blank">The Rake Remastered</a><br>
+‎          🏰 <a href="https://www.roblox.com/games/115958813741074/Tower-Obby-Easy" target="_blank">Tower Obby Easy</a><br>
+‎          🐱 <a href="https://www.roblox.com/games/116925158649823/Cat-Escape" target="_blank">Cat Escape!</a><br>
+‎          ✨ <a href="https://www.roblox.com/games/115326572683504/Astralis-Sanctum-TESTING-v-2" target="_blank">Astralis Sanctum</a><br>
+‎          💸 <a href="https://www.roblox.com/games/5918410179/Pls-Donate-Aditya" target="_blank">Pls Donate Aditya</a><br>
+‎          🛡️ <a href="https://www.roblox.com/games/16768824766/Emak-Defense-Simulator" target="_blank">Emak Defense Simulator</a>
+‎        </p>
+‎        <p>Koleksi game Roblox buatan <strong>Rakan Aditya</strong> mulai dari horror, obby, simulator, hingga social donation.</p>
+‎        <img src="https://i.imgur.com/RlMkR3N.png" alt="About Games roblox studio">
+‎      </div>
+‎    </div>
+‎
+‎
+‎
+‎    <div class="card">
+‎      <div class="card-content">
+‎        <h2>Novels & Stories</h2>
+‎
+‎        <p><a href="https://noveltoon.mobi/id/share/3904613" target="_blank">NovelToon</a> | 
+‎           <a href="https://www.webnovel.com/book/32681338808360405" target="_blank">Webnovel</a> |
+‎<a href=" https://www.royalroad.com/fiction/129464/battle-of-the-demon-king-awakening-of-the-holy/" target="_blank">RoyalRoad</a> |
+‎           <a href="https://www.wattpad.com/1500211856" target="_blank">Wattpad</a></p>
+‎        <p>Fantasy stories & life journey in multiple platforms.</p>
+‎        <img src="https://i.imgur.com/UP6wgmx.png" alt="About Novels">
+‎
+‎      </div>
+‎    </div>
+‎  </div>
+‎
+‎
+‎
+‎  <div class="about">
+‎    <h2>About Rakan Aditya</h2>
+‎    <p><strong>Rakan Aditya</strong> 🎮 is an Indonesian gamer & content creator. Active on YouTube, TikTok, Instagram, Discord, and Twitch. Loves editing, gaming, and interacting with fans through live streams. Supported by community via Saweria & Trakteer.</p>
+‎  <img src="https://i.imgur.com/7as9NtO.png" alt="About Rakan Aditya">
+‎
+‎</div>
+‎
+‎  <footer>
+‎    © 2025 Rakan Aditya
+‎  </footer>
+‎</body>
+‎</html>
+‎
