@@ -119,12 +119,12 @@ header p{
 
 .container{
     width:100%;
-    max-width:1400px;
-    margin:45px auto;
+    max-width:1500px;
+    margin:50px auto;
     padding:20px;
 
     display:grid;
-    gap:28px;
+    gap:30px;
 
     /* Desktop */
     grid-template-columns:repeat(4,1fr);
@@ -269,6 +269,8 @@ header h1{
 
 .card{
 
+   height: 100%;
+
     background:rgba(33,20,43,.78);
 
     backdrop-filter:blur(12px);
@@ -310,21 +312,20 @@ header h1{
 }
 
 .card img{
-
     width:100%;
-
-    height:210px;
-
+    aspect-ratio:16/9;
+    height:auto;
     object-fit:cover;
-
-    border-bottom:2px solid rgba(255,170,210,.4);
-
 }
-
 .card-content{
-
+    display:flex;
+    flex-direction: collumn;
+    height: 100%;
     padding:22px;
 
+}
+.card-content p:last-child{
+   margin-top: auto;
 }
 
 .card h2{
