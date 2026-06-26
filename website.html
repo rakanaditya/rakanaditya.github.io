@@ -13,19 +13,41 @@
 ‎  padding: 0;
 ‎  box-sizing: border-box;
 ‎}
-‎body {
-‎  font-family: 'Poppins', sans-serif;
-‎  background: linear-gradient(-45deg, #0f0f0f, #1a0033, #330066, #000);
-‎  background-size: 400% 400%;
-‎  animation: gradientShift 15s ease infinite;
-‎  color: #e0e0ff;
-‎  line-height: 1.6;
-‎}
-‎@keyframes gradientShift {
-‎  0% { background-position: 0% 50%; }
-‎  50% { background-position: 100% 50%; }
-‎  100% { background-position: 0% 50%; }
-‎}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(
+    -45deg,
+    #020617,
+    #0f172a,
+    #1e1b4b,
+    #312e81,
+    #0f766e,
+    #0ea5e9,
+    #020617
+  );
+  background-size: 500% 500%;
+  animation: gradientShift 18s ease infinite;
+  color: #e0e0ff;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 ‎a {
 ‎  color: #00f0ff;
 ‎  text-decoration: none;
