@@ -118,17 +118,73 @@ header p{
 ================================== */
 
 .container{
-    max-width:1500px;
+    width:min(1600px,95%);
     margin:50px auto;
-    padding:20px;
     display:grid;
-    gap:30px;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:35px;
+
+    align-items:start;
 }
 
-//* ==================================
-   Responsive
-================================== */
+   .card{
+
+    width:100%;
+    max-width:380px;
+
+    margin:auto;
+
+}
+
+   .card img{
+
+    width:100%;
+    height:210px;
+    object-fit:cover;
+
+}
+
+   .card-content{
+
+    display:flex;
+    flex-direction:column;
+    flex:1;
+
+}
+
+.card-content h2{
+
+    min-height:65px;
+
+}
+
+.card-content p:last-child{
+
+    margin-top:auto;
+
+}
+
+   @media (min-width:1400px){
+
+.container{
+
+    width:min(1700px,95%);
+
+    grid-template-columns:
+    repeat(3,minmax(380px,420px));
+
+    justify-content:center;
+
+    gap:45px;
+
+}
+
+}
+
+/* Responsive */
 
 /* Laptop Besar */
 @media (max-width:1400px){
@@ -322,7 +378,7 @@ header h1{
     padding:22px;
 
 }
-card-content p:last-child{
+.card-content p:last-child{
     margin-top:auto;
 }
 
