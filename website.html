@@ -111,25 +111,21 @@ header p{
 
 }
 
-/* GRID */
-
-   /* ===============================
-   Responsive Grid Layout
-================================== */
 /* =====================================================
-   CONTAINER (Responsive Grid)
+   RESPONSIVE GRID (FINAL)
 ===================================================== */
 
 .container{
 
     width:100%;
-    max-width:1700px;
+    max-width:1800px;
+
     margin:50px auto;
     padding:0 30px;
 
     display:grid;
 
-    grid-template-columns:repeat(4,minmax(280px,1fr));
+    grid-template-columns:repeat(4,1fr);
 
     gap:30px;
 
@@ -137,16 +133,19 @@ header p{
 
 }
 
-
 /* =====================================================
    CARD
 ===================================================== */
 
 .card{
 
-    background:rgba(33,20,43,.82);
+    width:100%;
+    min-width:0;
 
-    backdrop-filter:blur(12px);
+    display:flex;
+    flex-direction:column;
+
+    background:rgba(33,20,43,.82);
 
     border:2px solid rgba(255,180,220,.30);
 
@@ -154,34 +153,13 @@ header p{
 
     overflow:hidden;
 
-    display:flex;
-
-    flex-direction:column;
-
-    height:100%;
-
     transition:.35s ease;
 
     box-shadow:
         0 10px 25px rgba(0,0,0,.35),
         0 0 18px rgba(255,120,170,.20);
 
-    animation:fadeUp .8s forwards;
-
 }
-
-.card:hover{
-
-    transform:translateY(-8px);
-
-    border-color:#ff8fc7;
-
-    box-shadow:
-        0 20px 45px rgba(255,120,180,.35),
-        0 0 30px rgba(255,180,220,.45);
-
-}
-
 
 /* =====================================================
    IMAGE
@@ -190,7 +168,6 @@ header p{
 .card img{
 
     width:100%;
-
     aspect-ratio:16/9;
 
     object-fit:cover;
@@ -201,146 +178,58 @@ header p{
 
 }
 
-
-/* =====================================================
-   CARD CONTENT
-===================================================== */
-
-.card-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    flex:1;
-
-    padding:22px;
-
-}
-
-.card h2{
-
-    color:#ffd8eb;
-
-    font-size:1.45rem;
-
-    margin-bottom:15px;
-
-    line-height:1.4;
-
-    text-shadow:0 0 10px rgba(255,120,170,.35);
-
-}
-
-.card p{
-
-    color:#f2f2f2;
-
-    margin-bottom:15px;
-
-    line-height:1.7;
-
-}
-
-.card-content p:last-child{
-
-    margin-top:auto;
-
-}
-
-
-/* =====================================================
-   BUTTON LINK
-===================================================== */
-
-.card a{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    width:max-content;
-
-    padding:10px 20px;
-
-    border-radius:999px;
-
-    background:linear-gradient(135deg,#ff6ea8,#ff95c8);
-
-    color:#fff;
-
-    font-weight:600;
-
-    text-decoration:none;
-
-    transition:.3s;
-
-    box-shadow:0 5px 18px rgba(255,120,170,.35);
-
-}
-
-.card a:hover{
-
-    background:linear-gradient(135deg,#ffd166,#ff9bd2);
-
-    color:#34103b;
-
-    transform:translateY(-2px);
-
-}
-
-
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
-/* Desktop Besar */
-@media (min-width:1700px){
+/* Laptop Besar */
+@media (max-width:1600px){
 
-.container{
+    .container{
 
-    grid-template-columns:repeat(4,1fr);
+        grid-template-columns:repeat(4,1fr);
 
-}
+        gap:25px;
+
+    }
 
 }
 
 /* Laptop */
-@media (max-width:1400px){
+@media (max-width:1350px){
 
-.container{
+    .container{
 
-    grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(3,1fr);
 
-}
+    }
 
 }
 
 /* Tablet */
-@media (max-width:1000px){
+@media (max-width:992px){
 
-.container{
+    .container{
 
-    grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
 
-    padding:20px;
+        padding:20px;
 
-}
+    }
 
 }
 
 /* Mobile */
-@media (max-width:700px){
+@media (max-width:640px){
 
-.container{
+    .container{
 
-    grid-template-columns:1fr;
+        grid-template-columns:1fr;
 
-    gap:20px;
+        gap:20px;
+        padding:18px;
 
-    padding:18px;
+    }
 
 }
 
