@@ -112,25 +112,21 @@ header p{
 }
 
 /* =====================================================
-   RESPONSIVE GRID (FINAL)
+   PORTFOLIO GRID FINAL
 ===================================================== */
 
 .container{
 
-    width:100%;
-    max-width:1800px;
-
-    margin:50px auto;
-    padding:0 30px;
+    width:min(1800px,95%);
+    margin:60px auto;
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,minmax(0,1fr));
 
     gap:30px;
 
-    align-items:stretch;
-
+    align-items:start;
 }
 
 /* =====================================================
@@ -139,26 +135,33 @@ header p{
 
 .card{
 
-    width:100%;
-    min-width:0;
-
     display:flex;
     flex-direction:column;
+
+    width:100%;
 
     background:rgba(33,20,43,.82);
 
     border:2px solid rgba(255,180,220,.30);
-
     border-radius:22px;
 
     overflow:hidden;
 
-    transition:.35s ease;
-
     box-shadow:
         0 10px 25px rgba(0,0,0,.35),
-        0 0 18px rgba(255,120,170,.20);
+        0 0 18px rgba(255,120,170,.18);
 
+    transition:.35s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#ff9ecb;
+
+    box-shadow:
+        0 15px 40px rgba(255,120,180,.35);
 }
 
 /* =====================================================
@@ -168,80 +171,126 @@ header p{
 .card img{
 
     width:100%;
-    aspect-ratio:16/9;
+    height:220px;
 
     object-fit:cover;
 
     display:block;
 
-    border-bottom:2px solid rgba(255,180,220,.30);
+    flex-shrink:0;
+}
 
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.card-content{
+
+    display:flex;
+    flex-direction:column;
+
+    flex:1;
+
+    padding:22px;
+}
+
+.card h2{
+
+    color:#ffd8eb;
+
+    font-size:1.4rem;
+
+    margin-bottom:15px;
+}
+
+.card p{
+
+    color:#f2f2f2;
+
+    line-height:1.7;
+
+    margin-bottom:15px;
+}
+
+.card-content p:last-child{
+
+    margin-top:auto;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.card a{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:max-content;
+
+    padding:10px 20px;
+
+    border-radius:999px;
+
+    background:linear-gradient(135deg,#ff6ea8,#ff95c8);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.card a:hover{
+
+    background:linear-gradient(135deg,#ffd166,#ff9bd2);
+
+    color:#34103b;
 }
 
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
-/* Laptop Besar */
-@media (max-width:1600px){
+@media (max-width:1700px){
 
-    .container{
+.container{
 
-        grid-template-columns:repeat(4,1fr);
-
-        gap:25px;
-
-    }
+grid-template-columns:repeat(4,1fr);
 
 }
 
-/* Laptop */
-@media (max-width:1350px){
+}
 
-    .container{
+@media (max-width:1400px){
 
-        grid-template-columns:repeat(3,1fr);
+.container{
 
-    }
+grid-template-columns:repeat(3,1fr);
 
 }
 
-/* Tablet */
-@media (max-width:992px){
+}
 
-    .container{
+@media (max-width:1000px){
 
-        grid-template-columns:repeat(2,1fr);
+.container{
 
-        padding:20px;
-
-    }
+grid-template-columns:repeat(2,1fr);
 
 }
 
-/* Mobile */
-@media (max-width:640px){
-
-    .container{
-
-        grid-template-columns:1fr;
-
-        gap:20px;
-        padding:18px;
-
-    }
-
 }
 
-.card h2{
+@media (max-width:650px){
 
-    font-size:1.2rem;
+.container{
 
-}
-
-.card{
-
-    border-radius:18px;
+grid-template-columns:1fr;
 
 }
 
