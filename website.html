@@ -496,6 +496,42 @@ animation-delay:3s;
 
 }
 
+    .header-top{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.music-control{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 16px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:50px;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 0 15px rgba(255,120,180,.25);
+}
+
+.music-control span{
+    color:white;
+    font-size:14px;
+    font-weight:600;
+}
+
+.music-control input[type=range]{
+    width:150px;
+    accent-color:#ff77aa;
+}
+
 </style>
 </head>
 <body>
@@ -503,21 +539,21 @@ animation-delay:3s;
 <audio id="bgMusic" autoplay loop>
     <source src="bgmusic.mp3" type="audio/mpeg">
 </audio>
-    <input
-    type="range"
-    id="volume"
-    min="0"
-    max="100"
-    value="30">
+
 
 <script>
 const music = document.getElementById("bgMusic");
 const volume = document.getElementById("volume");
-music.volume = 0.3;
+const volumeValue = document.getElementById("volumeValue");
+
+// Volume awal
+music.volume = volume.value / 100;
 
 volume.addEventListener("input", function () {
     music.volume = this.value / 100;
-    
+    volumeValue.textContent = this.value + "%";
+});
+
 function startMusic() {
     music.play().catch(() => {});
     document.removeEventListener("click", startMusic);
@@ -525,9 +561,7 @@ function startMusic() {
     document.removeEventListener("touchstart", startMusic);
 }
 
-// Coba autoplay
 music.play().catch(() => {
-    // Jika diblokir browser, putar saat interaksi pertama
     document.addEventListener("click", startMusic);
     document.addEventListener("keydown", startMusic);
     document.addEventListener("touchstart", startMusic);
@@ -550,6 +584,20 @@ music.play().catch(() => {
 </div>
 
 <header>
+
+<div class="header-top">
+    <div class="music-control">
+        🔊 <span>Volume</span>
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="30">
+        <span id="volumeValue">30%</span>
+    </div>
+</div>
+    
 <h1>Rakan Aditya Portofolio</h1>
  <p>Personal Projects • Websites • Creative Works • Conten Creator</p>
 </header>
