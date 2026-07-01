@@ -503,11 +503,21 @@ animation-delay:3s;
 <audio id="bgMusic" autoplay loop>
     <source src="bgmusic.mp3" type="audio/mpeg">
 </audio>
+    <input
+    type="range"
+    id="volume"
+    min="0"
+    max="100"
+    value="30">
 
 <script>
 const music = document.getElementById("bgMusic");
+const volume = document.getElementById("volume");
 music.volume = 0.3;
 
+volume.addEventListener("input", function () {
+    music.volume = this.value / 100;
+    
 function startMusic() {
     music.play().catch(() => {});
     document.removeEventListener("click", startMusic);
