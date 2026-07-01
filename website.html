@@ -501,18 +501,27 @@ animation-delay:3s;
 <body>
 
 <audio id="bgMusic" autoplay loop>
-    <source src="./bgmusic.mp3" type="audio/mpeg">
+    <source src="bgmusic.mp3" type="audio/mpeg">
 </audio>
 
-    <script>
+<script>
 const music = document.getElementById("bgMusic");
+music.volume = 0.3;
 
-music.play();
+function startMusic() {
+    music.play().catch(() => {});
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("keydown", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+}
 
-setTimeout(() => {
-    music.muted = false;
-    music.volume = 0.3;
-}, 1000);
+// Coba autoplay
+music.play().catch(() => {
+    // Jika diblokir browser, putar saat interaksi pertama
+    document.addEventListener("click", startMusic);
+    document.addEventListener("keydown", startMusic);
+    document.addEventListener("touchstart", startMusic);
+});
 </script>
     
 <div class="sakura">
