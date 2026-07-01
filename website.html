@@ -499,6 +499,22 @@ animation-delay:3s;
 </style>
 </head>
 <body>
+
+<audio id="bgMusic" autoplay loop>
+    <source src="./bgmusic.mp3" type="audio/mpeg">
+</audio>
+
+    <script>
+const music = document.getElementById("bgMusic");
+
+music.play();
+
+setTimeout(() => {
+    music.muted = false;
+    music.volume = 0.3;
+}, 1000);
+</script>
+    
 <div class="sakura">
     <span></span>
     <span></span>
