@@ -16,24 +16,32 @@
         :root {
             --bg: #0b0f19;
             --card: #121826;
-            --card-2: #182131;
-            --border: rgba(255, 255, 255, 0.08);
+            --card2: #182131;
+            --border: rgba(255,255,255,0.08);
             --text: #f4f7fb;
             --muted: #8e9aaf;
             --primary: #6c63ff;
             --primary-hover: #7d75ff;
             --green: #35d07f;
             --red: #ff6577;
-            --yellow: #ffc857;
         }
 
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(108, 99, 255, 0.15), transparent 35%),
-                radial-gradient(circle at bottom right, rgba(53, 208, 127, 0.08), transparent 30%),
+                radial-gradient(
+                    circle at top left,
+                    rgba(108,99,255,0.15),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(53,208,127,0.08),
+                    transparent 30%
+                ),
                 var(--bg);
+
             color: var(--text);
             padding: 30px 16px;
         }
@@ -45,22 +53,34 @@
         }
 
         /* HEADER */
+
         .header {
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 25px;
         }
 
         .logo {
             width: 58px;
             height: 58px;
             margin: 0 auto 15px;
-            border-radius: 18px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            border-radius: 18px;
+
             font-size: 28px;
-            background: linear-gradient(135deg, var(--primary), #9b5cff);
-            box-shadow: 0 10px 35px rgba(108, 99, 255, 0.25);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #9b5cff
+                );
+
+            box-shadow:
+                0 10px 35px rgba(108,99,255,0.25);
         }
 
         .header h1 {
@@ -73,22 +93,85 @@
             font-size: 14px;
         }
 
-        /* MAIN CARD */
+        /* CARD */
+
         .card {
-            background: rgba(18, 24, 38, 0.92);
+            background: rgba(18,24,38,0.94);
+
             border: 1px solid var(--border);
+
             border-radius: 22px;
+
             padding: 25px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.35);
+
             backdrop-filter: blur(12px);
         }
 
-        /* INPUT SECTION */
+        /* MODE SELECTOR */
+
         .section-title {
             font-size: 15px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
+
+        .mode-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .mode {
+            position: relative;
+
+            padding: 17px;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--border);
+
+            background: var(--card2);
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .mode:hover {
+            border-color: rgba(108,99,255,0.5);
+        }
+
+        .mode.active {
+            border-color: var(--primary);
+
+            background:
+                rgba(108,99,255,0.12);
+
+            box-shadow:
+                0 0 0 2px rgba(108,99,255,0.08);
+        }
+
+        .mode input {
+            display: none;
+        }
+
+        .mode-name {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .mode-description {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        /* INPUT */
 
         .inputs {
             display: grid;
@@ -98,8 +181,11 @@
 
         .input-group label {
             display: block;
+
             font-size: 13px;
+
             color: var(--muted);
+
             margin-bottom: 8px;
         }
 
@@ -109,54 +195,77 @@
 
         .prefix {
             position: absolute;
+
             left: 14px;
             top: 50%;
+
             transform: translateY(-50%);
+
             color: var(--muted);
+
             font-size: 14px;
+
             pointer-events: none;
         }
 
-        input {
+        input[type="number"] {
             width: 100%;
+
             border: 1px solid var(--border);
-            background: var(--card-2);
+
+            background: var(--card2);
+
             color: var(--text);
+
             outline: none;
+
             border-radius: 12px;
+
             padding: 14px;
+
             font-size: 16px;
+
             transition: 0.2s;
         }
 
-        input.has-prefix {
+        input.price {
             padding-left: 40px;
         }
 
-        input:focus {
+        input[type="number"]:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.12);
+
+            box-shadow:
+                0 0 0 3px rgba(108,99,255,0.12);
         }
 
-        /* RATE */
+        /* RATES */
+
         .rates {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+
             margin-top: 20px;
         }
 
         .rate-box {
             padding: 14px;
+
             border-radius: 13px;
-            background: var(--card-2);
+
+            background: var(--card2);
+
             border: 1px solid var(--border);
         }
 
         .rate-box span {
             display: block;
+
             color: var(--muted);
+
             font-size: 12px;
+
             margin-bottom: 5px;
         }
 
@@ -164,32 +273,50 @@
             font-size: 18px;
         }
 
+        .rate-box.disabled {
+            opacity: 0.45;
+        }
+
         /* DIVIDER */
+
         .divider {
             height: 1px;
+
             background: var(--border);
+
             margin: 25px 0;
         }
 
         /* RESULT */
+
         .result-title {
             font-size: 15px;
+
             font-weight: 700;
+
             margin-bottom: 14px;
         }
 
         .result-list {
             display: flex;
+
             flex-direction: column;
-            gap: 9px;
+
+            gap: 8px;
         }
 
         .result-row {
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.05);
+
             gap: 15px;
         }
 
@@ -199,12 +326,15 @@
 
         .result-label {
             color: var(--muted);
+
             font-size: 14px;
         }
 
         .result-value {
             font-size: 14px;
+
             font-weight: 700;
+
             text-align: right;
         }
 
@@ -216,87 +346,81 @@
             color: var(--red);
         }
 
-        .net {
-            color: var(--green);
-        }
+        /* FINAL */
 
-        /* FINAL RESULT */
         .final-result {
             margin-top: 18px;
+
             padding: 22px;
+
             border-radius: 17px;
-            background: linear-gradient(
-                135deg,
-                rgba(53, 208, 127, 0.10),
-                rgba(108, 99, 255, 0.10)
-            );
-            border: 1px solid rgba(53, 208, 127, 0.18);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(53,208,127,0.10),
+                    rgba(108,99,255,0.10)
+                );
+
+            border:
+                1px solid rgba(53,208,127,0.18);
         }
 
         .final-result .small {
             color: var(--muted);
+
             font-size: 13px;
+
             margin-bottom: 7px;
         }
 
         .final-result .amount {
             color: var(--green);
+
             font-size: 32px;
+
             font-weight: 800;
+
             word-break: break-word;
         }
 
         .per-item {
             margin-top: 8px;
+
             color: var(--muted);
+
             font-size: 12px;
         }
 
-        /* RESET */
-        .actions {
-            margin-top: 20px;
-        }
-
-        button {
-            width: 100%;
-            border: none;
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            color: white;
-            background: var(--primary);
-            transition: 0.2s;
-        }
-
-        button:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
         /* FORMULA */
+
         .formula {
             margin-top: 20px;
+
             padding: 15px;
+
             border-radius: 12px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid var(--border);
         }
 
         .formula-title {
             font-size: 12px;
+
             color: var(--muted);
+
             margin-bottom: 8px;
         }
 
         .formula p {
             font-size: 12px;
+
             line-height: 1.8;
+
             color: #b7c0d0;
         }
 
@@ -304,22 +428,67 @@
             color: var(--text);
         }
 
+        /* RESET */
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 14px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            color: white;
+
+            background: var(--primary);
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
         /* FOOTER */
+
         footer {
             text-align: center;
+
             color: var(--muted);
+
             font-size: 12px;
+
             margin-top: 20px;
         }
 
         /* MOBILE */
+
         @media (max-width: 600px) {
+
             body {
                 padding: 20px 12px;
             }
 
             .card {
                 padding: 18px;
+
                 border-radius: 18px;
             }
 
@@ -328,7 +497,8 @@
             }
 
             .inputs,
-            .rates {
+            .rates,
+            .mode-selector {
                 grid-template-columns: 1fr;
             }
 
@@ -339,83 +509,172 @@
     </style>
 </head>
 
+
 <body>
 
 <div class="container">
 
-    <header class="header">
-        <div class="logo">💰</div>
+    <!-- HEADER -->
 
-        <h1>Sales Calculator</h1>
+    <header class="header">
+
+        <div class="logo">
+            💰
+        </div>
+
+        <h1>
+            Sales Calculator
+        </h1>
 
         <p>
-            Hitung otomatis harga jual, listing fee, sales tax,
-            dan hasil bersih.
+            Hitung harga jual dan hasil bersih secara otomatis.
         </p>
+
     </header>
 
 
     <main class="card">
 
+        <!-- MODE -->
+
+        <div class="section-title">
+            ⚙️ Pilih Metode Perhitungan
+        </div>
+
+
+        <div class="mode-selector">
+
+            <label class="mode active" id="mode1">
+
+                <input
+                    type="radio"
+                    name="calculationMode"
+                    value="1"
+                    checked
+                >
+
+                <div class="mode-name">
+                    Opsi 1 — Listing + Tax
+                </div>
+
+                <div class="mode-description">
+                    Listing Fee 5% + Sales Tax 10%
+                </div>
+
+            </label>
+
+
+            <label class="mode" id="mode2">
+
+                <input
+                    type="radio"
+                    name="calculationMode"
+                    value="2"
+                >
+
+                <div class="mode-name">
+                    Opsi 2 — Tax Only
+                </div>
+
+                <div class="mode-description">
+                    Hanya Sales Tax 10%, tanpa Listing Fee
+                </div>
+
+            </label>
+
+        </div>
+
+
         <!-- INPUT -->
+
         <div class="section-title">
             📦 Informasi Barang
         </div>
 
+
         <div class="inputs">
 
             <div class="input-group">
+
                 <label for="price">
                     Harga per Item
                 </label>
 
                 <div class="input-wrapper">
-                    <span class="prefix">Rp</span>
+
+                    <span class="prefix">
+                        Rp
+                    </span>
 
                     <input
                         id="price"
-                        class="has-prefix"
+                        class="price"
                         type="number"
                         min="0"
                         step="1"
                         value="1000000"
                         placeholder="Contoh: 1000000"
                     >
+
                 </div>
+
             </div>
 
 
             <div class="input-group">
+
                 <label for="quantity">
                     Jumlah Barang
                 </label>
 
                 <div class="input-wrapper">
+
                     <input
                         id="quantity"
                         type="number"
-                        min="1"
+                        min="0"
                         step="1"
                         value="1"
                         placeholder="Contoh: 10"
                     >
+
                 </div>
+
             </div>
 
         </div>
 
 
         <!-- RATES -->
+
         <div class="rates">
 
-            <div class="rate-box">
-                <span>Listing Fee</span>
-                <strong>5%</strong>
+            <div
+                class="rate-box"
+                id="listingRateBox"
+            >
+
+                <span>
+                    Listing Fee
+                </span>
+
+                <strong>
+                    5%
+                </strong>
+
             </div>
 
+
             <div class="rate-box">
-                <span>Sales Tax</span>
-                <strong>10%</strong>
+
+                <span>
+                    Sales Tax
+                </span>
+
+                <strong>
+                    10%
+                </strong>
+
             </div>
 
         </div>
@@ -425,13 +684,16 @@
 
 
         <!-- RESULT -->
+
         <div class="result-title">
             📊 Hasil Perhitungan
         </div>
 
+
         <div class="result-list">
 
             <div class="result-row">
+
                 <span class="result-label">
                     Harga per Item
                 </span>
@@ -442,10 +704,12 @@
                 >
                     Rp1.000.000
                 </span>
+
             </div>
 
 
             <div class="result-row">
+
                 <span class="result-label">
                     Jumlah Barang
                 </span>
@@ -456,10 +720,12 @@
                 >
                     1
                 </span>
+
             </div>
 
 
             <div class="result-row">
+
                 <span class="result-label">
                     Total Kotor
                 </span>
@@ -470,10 +736,17 @@
                 >
                     Rp1.000.000
                 </span>
+
             </div>
 
 
-            <div class="result-row">
+            <!-- LISTING -->
+
+            <div
+                class="result-row"
+                id="listingRow"
+            >
+
                 <span class="result-label">
                     Listing Fee (5%)
                 </span>
@@ -484,10 +757,14 @@
                 >
                     - Rp50.000
                 </span>
+
             </div>
 
 
+            <!-- SALES TAX -->
+
             <div class="result-row">
+
                 <span class="result-label">
                     Sales Tax (10%)
                 </span>
@@ -498,10 +775,14 @@
                 >
                     - Rp100.000
                 </span>
+
             </div>
 
 
+            <!-- TOTAL FEE -->
+
             <div class="result-row">
+
                 <span class="result-label">
                     Total Potongan
                 </span>
@@ -512,12 +793,14 @@
                 >
                     - Rp150.000
                 </span>
+
             </div>
 
         </div>
 
 
-        <!-- FINAL -->
+        <!-- FINAL RESULT -->
+
         <div class="final-result">
 
             <div class="small">
@@ -542,27 +825,33 @@
 
 
         <!-- FORMULA -->
+
         <div class="formula">
 
             <div class="formula-title">
-                ℹ️ Rumus
+                ℹ️ Rumus yang digunakan
             </div>
 
-            <p>
-                <b>Total Kotor</b> = Harga × Jumlah<br>
+            <p id="formulaText">
 
-                <b>Listing Fee</b> = Total Kotor × 5%<br>
+                <b>Opsi 1</b><br>
 
-                <b>Sales Tax</b> = Total Kotor × 10%<br>
+                Total Kotor = Harga × Jumlah<br>
 
-                <b>Total Bersih</b> =
+                Listing Fee = Total Kotor × 5%<br>
+
+                Sales Tax = Total Kotor × 10%<br>
+
+                Total Bersih =
                 Total Kotor − Listing Fee − Sales Tax
+
             </p>
 
         </div>
 
 
-        <!-- BUTTON -->
+        <!-- RESET -->
+
         <div class="actions">
 
             <button id="resetButton">
@@ -582,11 +871,13 @@
 
 
 <script>
+
     // ==========================================
     // KONFIGURASI
     // ==========================================
 
     const LISTING_FEE_RATE = 0.05;
+
     const SALES_TAX_RATE = 0.10;
 
 
@@ -594,21 +885,60 @@
     // ELEMENT
     // ==========================================
 
-    const priceInput = document.getElementById("price");
-    const quantityInput = document.getElementById("quantity");
+    const priceInput =
+        document.getElementById("price");
 
-    const resultPrice = document.getElementById("resultPrice");
-    const resultQuantity = document.getElementById("resultQuantity");
+    const quantityInput =
+        document.getElementById("quantity");
 
-    const grossElement = document.getElementById("gross");
-    const listingFeeElement = document.getElementById("listingFee");
-    const salesTaxElement = document.getElementById("salesTax");
-    const totalFeeElement = document.getElementById("totalFee");
+    const resultPrice =
+        document.getElementById("resultPrice");
 
-    const netElement = document.getElementById("net");
-    const netPerItemElement = document.getElementById("netPerItem");
+    const resultQuantity =
+        document.getElementById("resultQuantity");
 
-    const resetButton = document.getElementById("resetButton");
+    const grossElement =
+        document.getElementById("gross");
+
+    const listingFeeElement =
+        document.getElementById("listingFee");
+
+    const salesTaxElement =
+        document.getElementById("salesTax");
+
+    const totalFeeElement =
+        document.getElementById("totalFee");
+
+    const netElement =
+        document.getElementById("net");
+
+    const netPerItemElement =
+        document.getElementById("netPerItem");
+
+    const listingRow =
+        document.getElementById("listingRow");
+
+    const listingRateBox =
+        document.getElementById("listingRateBox");
+
+    const formulaText =
+        document.getElementById("formulaText");
+
+    const resetButton =
+        document.getElementById("resetButton");
+
+    const mode1 =
+        document.getElementById("mode1");
+
+    const mode2 =
+        document.getElementById("mode2");
+
+
+    // ==========================================
+    // MODE
+    // ==========================================
+
+    let calculationMode = 1;
 
 
     // ==========================================
@@ -618,9 +948,13 @@
     function formatRupiah(number) {
 
         return new Intl.NumberFormat("id-ID", {
+
             style: "currency",
+
             currency: "IDR",
+
             maximumFractionDigits: 0
+
         }).format(number);
 
     }
@@ -633,129 +967,81 @@
     function formatNumber(number) {
 
         return new Intl.NumberFormat("id-ID", {
+
             maximumFractionDigits: 0
+
         }).format(number);
 
     }
 
 
     // ==========================================
-    // CALCULATOR
+    // UPDATE MODE UI
     // ==========================================
 
-    function calculate() {
+    function updateModeUI() {
 
-        let price = Number(priceInput.value);
-        let quantity = Number(quantityInput.value);
+        if (calculationMode === 1) {
 
+            mode1.classList.add("active");
 
-        // Mencegah angka negatif / kosong
+            mode2.classList.remove("active");
 
-        if (!Number.isFinite(price) || price < 0) {
-            price = 0;
+            listingRow.style.display = "flex";
+
+            listingRateBox.classList.remove("disabled");
+
+            formulaText.innerHTML = `
+
+                <b>Opsi 1</b><br>
+
+                Total Kotor = Harga × Jumlah<br>
+
+                Listing Fee = Total Kotor × 5%<br>
+
+                Sales Tax = Total Kotor × 10%<br>
+
+                Total Bersih =
+                Total Kotor − Listing Fee − Sales Tax
+
+            `;
+
+        } else {
+
+            mode1.classList.remove("active");
+
+            mode2.classList.add("active");
+
+            listingRow.style.display = "none";
+
+            listingRateBox.classList.add("disabled");
+
+            formulaText.innerHTML = `
+
+                <b>Opsi 2</b><br>
+
+                Total Kotor = Harga × Jumlah<br>
+
+                Sales Tax = Total Kotor × 10%<br>
+
+                Total Bersih =
+                Total Kotor − Sales Tax
+
+            `;
+
         }
-
-        if (!Number.isFinite(quantity) || quantity < 0) {
-            quantity = 0;
-        }
-
-
-        // Total kotor
-
-        const gross = price * quantity;
-
-
-        // Listing fee 5%
-
-        const listingFee = gross * LISTING_FEE_RATE;
-
-
-        // Sales tax 10%
-
-        const salesTax = gross * SALES_TAX_RATE;
-
-
-        // Total semua potongan
-
-        const totalFee = listingFee + salesTax;
-
-
-        // Total bersih
-
-        const net = gross - totalFee;
-
-
-        // Bersih per item
-
-        const netPerItem =
-            quantity > 0
-                ? net / quantity
-                : 0;
-
-
-        // ==========================================
-        // UPDATE UI
-        // ==========================================
-
-        resultPrice.textContent =
-            formatRupiah(price);
-
-        resultQuantity.textContent =
-            formatNumber(quantity);
-
-        grossElement.textContent =
-            formatRupiah(gross);
-
-        listingFeeElement.textContent =
-            "- " + formatRupiah(listingFee);
-
-        salesTaxElement.textContent =
-            "- " + formatRupiah(salesTax);
-
-        totalFeeElement.textContent =
-            "- " + formatRupiah(totalFee);
-
-        netElement.textContent =
-            formatRupiah(net);
-
-        netPerItemElement.textContent =
-            "Bersih per item: " +
-            formatRupiah(netPerItem);
 
     }
 
 
     // ==========================================
-    // AUTO CALCULATE
+    // CALCULATE
     // ==========================================
 
-    priceInput.addEventListener("input", calculate);
+    function calculate() {
 
-    quantityInput.addEventListener("input", calculate);
+        let price =
+            Number(priceInput.value);
 
-
-    // ==========================================
-    // RESET
-    // ==========================================
-
-    resetButton.addEventListener("click", function() {
-
-        priceInput.value = 1000000;
-
-        quantityInput.value = 1;
-
-        calculate();
-
-    });
-
-
-    // ==========================================
-    // INITIAL CALCULATION
-    // ==========================================
-
-    calculate();
-
-</script>
-
-</body>
-</html>
+        let quantity =
+            Number(quantityInput
