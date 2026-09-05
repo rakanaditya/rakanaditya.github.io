@@ -1044,4 +1044,201 @@
             Number(priceInput.value);
 
         let quantity =
-            Number(quantityInput
+            Number(quantityInput.value);
+
+
+        // Validasi
+
+        if (!Number.isFinite(price) || price < 0) {
+
+            price = 0;
+
+        }
+
+
+        if (!Number.isFinite(quantity) || quantity < 0) {
+
+            quantity = 0;
+
+        }
+
+
+        // ==========================================
+        // TOTAL KOTOR
+        // ==========================================
+
+        const gross =
+            price * quantity;
+
+
+        // ==========================================
+        // LISTING FEE
+        // ==========================================
+
+        let listingFee = 0;
+
+
+        if (calculationMode === 1) {
+
+            listingFee =
+                gross * LISTING_FEE_RATE;
+
+        }
+
+
+        // ==========================================
+        // SALES TAX
+        // ==========================================
+
+        const salesTax =
+            gross * SALES_TAX_RATE;
+
+
+        // ==========================================
+        // TOTAL POTONGAN
+        // ==========================================
+
+        const totalFee =
+            listingFee + salesTax;
+
+
+        // ==========================================
+        // TOTAL BERSIH
+        // ==========================================
+
+        const net =
+            gross - totalFee;
+
+
+        // ==========================================
+        // BERSIH PER ITEM
+        // ==========================================
+
+        const netPerItem =
+            quantity > 0
+                ? net / quantity
+                : 0;
+
+
+        // ==========================================
+        // UPDATE
+        // ==========================================
+
+        resultPrice.textContent =
+            formatRupiah(price);
+
+
+        resultQuantity.textContent =
+            formatNumber(quantity);
+
+
+        grossElement.textContent =
+            formatRupiah(gross);
+
+
+        listingFeeElement.textContent =
+            "- " + formatRupiah(listingFee);
+
+
+        salesTaxElement.textContent =
+            "- " + formatRupiah(salesTax);
+
+
+        totalFeeElement.textContent =
+            "- " + formatRupiah(totalFee);
+
+
+        netElement.textContent =
+            formatRupiah(net);
+
+
+        netPerItemElement.textContent =
+            "Bersih per item: " +
+            formatRupiah(netPerItem);
+
+    }
+
+
+    // ==========================================
+    // MODE CHANGE
+    // ==========================================
+
+    document
+        .querySelectorAll(
+            'input[name="calculationMode"]'
+        )
+        .forEach(function(input) {
+
+            input.addEventListener(
+                "change",
+                function() {
+
+                    calculationMode =
+                        Number(this.value);
+
+                    updateModeUI();
+
+                    calculate();
+
+                }
+            );
+
+        });
+
+
+    // ==========================================
+    // INPUT CHANGE
+    // ==========================================
+
+    priceInput.addEventListener(
+        "input",
+        calculate
+    );
+
+
+    quantityInput.addEventListener(
+        "input",
+        calculate
+    );
+
+
+    // ==========================================
+    // RESET
+    // ==========================================
+
+    resetButton.addEventListener(
+        "click",
+        function() {
+
+            priceInput.value = 1000000;
+
+            quantityInput.value = 1;
+
+            calculationMode = 1;
+
+            document
+                .querySelector(
+                    'input[value="1"]'
+                )
+                .checked = true;
+
+            updateModeUI();
+
+            calculate();
+
+        }
+    );
+
+
+    // ==========================================
+    // INITIAL
+    // ==========================================
+
+    updateModeUI();
+
+    calculate();
+
+</script>
+
+</body>
+</html>
