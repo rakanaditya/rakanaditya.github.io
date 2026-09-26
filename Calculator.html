@@ -24,11 +24,13 @@
             --primary-hover: #7d75ff;
             --green: #35d07f;
             --red: #ff6577;
+            --yellow: #ffc857;
         }
 
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
+
             background:
                 radial-gradient(
                     circle at top left,
@@ -52,7 +54,9 @@
             margin: auto;
         }
 
-        /* HEADER */
+        /* =========================
+           HEADER
+        ========================= */
 
         .header {
             text-align: center;
@@ -69,7 +73,6 @@
             justify-content: center;
 
             border-radius: 18px;
-
             font-size: 28px;
 
             background:
@@ -93,15 +96,14 @@
             font-size: 14px;
         }
 
-        /* CARD */
+        /* =========================
+           CARD
+        ========================= */
 
         .card {
             background: rgba(18,24,38,0.94);
-
             border: 1px solid var(--border);
-
             border-radius: 22px;
-
             padding: 25px;
 
             box-shadow:
@@ -110,13 +112,19 @@
             backdrop-filter: blur(12px);
         }
 
-        /* MODE SELECTOR */
+        /* =========================
+           SECTION
+        ========================= */
 
         .section-title {
             font-size: 15px;
             font-weight: 700;
             margin-bottom: 14px;
         }
+
+        /* =========================
+           MODE SELECTOR
+        ========================= */
 
         .mode-selector {
             display: grid;
@@ -127,15 +135,12 @@
 
         .mode {
             position: relative;
-
             padding: 17px;
 
             border-radius: 14px;
-
             border: 1px solid var(--border);
 
             background: var(--card2);
-
             cursor: pointer;
 
             transition: 0.2s;
@@ -171,7 +176,9 @@
             color: var(--muted);
         }
 
-        /* INPUT */
+        /* =========================
+           INPUT
+        ========================= */
 
         .inputs {
             display: grid;
@@ -183,9 +190,7 @@
             display: block;
 
             font-size: 13px;
-
             color: var(--muted);
-
             margin-bottom: 8px;
         }
 
@@ -202,13 +207,13 @@
             transform: translateY(-50%);
 
             color: var(--muted);
-
             font-size: 14px;
 
             pointer-events: none;
         }
 
-        input[type="number"] {
+        input[type="number"],
+        input[type="text"] {
             width: 100%;
 
             border: 1px solid var(--border);
@@ -232,14 +237,17 @@
             padding-left: 40px;
         }
 
-        input[type="number"]:focus {
+        input[type="number"]:focus,
+        input[type="text"]:focus {
             border-color: var(--primary);
 
             box-shadow:
                 0 0 0 3px rgba(108,99,255,0.12);
         }
 
-        /* RATES */
+        /* =========================
+           RATES
+        ========================= */
 
         .rates {
             display: grid;
@@ -277,7 +285,9 @@
             opacity: 0.45;
         }
 
-        /* DIVIDER */
+        /* =========================
+           DIVIDER
+        ========================= */
 
         .divider {
             height: 1px;
@@ -287,21 +297,19 @@
             margin: 25px 0;
         }
 
-        /* RESULT */
+        /* =========================
+           RESULT
+        ========================= */
 
         .result-title {
             font-size: 15px;
-
             font-weight: 700;
-
             margin-bottom: 14px;
         }
 
         .result-list {
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
         }
 
@@ -309,7 +317,6 @@
             display: flex;
 
             justify-content: space-between;
-
             align-items: center;
 
             padding: 12px 0;
@@ -326,15 +333,12 @@
 
         .result-label {
             color: var(--muted);
-
             font-size: 14px;
         }
 
         .result-value {
             font-size: 14px;
-
             font-weight: 700;
-
             text-align: right;
         }
 
@@ -346,7 +350,9 @@
             color: var(--red);
         }
 
-        /* FINAL */
+        /* =========================
+           FINAL
+        ========================= */
 
         .final-result {
             margin-top: 18px;
@@ -392,7 +398,9 @@
             font-size: 12px;
         }
 
-        /* FORMULA */
+        /* =========================
+           FORMULA
+        ========================= */
 
         .formula {
             margin-top: 20px;
@@ -428,15 +436,199 @@
             color: var(--text);
         }
 
-        /* RESET */
+        /* =========================
+           QUICK CALCULATOR
+        ========================= */
+
+        .quick-calculator {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(108,99,255,0.10),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid rgba(108,99,255,0.18);
+        }
+
+        .quick-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+        }
+
+        .quick-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .quick-badge {
+            padding: 6px 10px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(108,99,255,0.12);
+
+            color: #a9a4ff;
+
+            border:
+                1px solid rgba(108,99,255,0.20);
+
+            font-size: 11px;
+
+            white-space: nowrap;
+        }
+
+        .quick-input-wrapper {
+            position: relative;
+        }
+
+        .quick-input {
+            width: 100%;
+
+            font-size: 20px !important;
+
+            padding-right: 50px !important;
+        }
+
+        .quick-clear {
+            position: absolute;
+
+            right: 10px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 34px;
+            height: 34px;
+
+            padding: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .quick-clear:hover {
+            background:
+                rgba(255,255,255,0.12);
+
+            color: var(--text);
+        }
+
+        .quick-result {
+            margin-top: 15px;
+
+            padding: 18px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(0,0,0,0.18);
+
+            border:
+                1px solid var(--border);
+        }
+
+        .quick-result-label {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+        .quick-result-value {
+            font-size: 28px;
+
+            font-weight: 800;
+
+            color: var(--green);
+
+            word-break: break-word;
+        }
+
+        .quick-status {
+            margin-top: 7px;
+
+            min-height: 16px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+        .quick-examples {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 12px;
+        }
+
+        .example {
+            border: 1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: var(--muted);
+
+            border-radius: 8px;
+
+            padding: 7px 10px;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .example:hover {
+            border-color:
+                rgba(108,99,255,0.45);
+
+            color: var(--text);
+        }
+
+        /* =========================
+           RESET
+        ========================= */
 
         .actions {
             margin-top: 20px;
         }
 
         button {
-            width: 100%;
-
             border: none;
 
             border-radius: 12px;
@@ -456,17 +648,23 @@
             transition: 0.2s;
         }
 
-        button:hover {
+        .reset-button {
+            width: 100%;
+        }
+
+        .reset-button:hover {
             background: var(--primary-hover);
 
             transform: translateY(-1px);
         }
 
-        button:active {
+        .reset-button:active {
             transform: translateY(0);
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             text-align: center;
@@ -478,7 +676,9 @@
             margin-top: 20px;
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
 
@@ -505,16 +705,27 @@
             .final-result .amount {
                 font-size: 26px;
             }
+
+            .quick-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .quick-result-value {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
-    <!-- HEADER -->
+    <!-- =========================
+         HEADER
+    ========================== -->
 
     <header class="header">
 
@@ -535,12 +746,13 @@
 
     <main class="card">
 
-        <!-- MODE -->
+        <!-- =========================
+             MODE
+        ========================== -->
 
         <div class="section-title">
             ⚙️ Pilih Metode Perhitungan
         </div>
-
 
         <div class="mode-selector">
 
@@ -585,12 +797,13 @@
         </div>
 
 
-        <!-- INPUT -->
+        <!-- =========================
+             INPUT
+        ========================== -->
 
         <div class="section-title">
             📦 Informasi Barang
         </div>
-
 
         <div class="inputs">
 
@@ -645,7 +858,9 @@
         </div>
 
 
-        <!-- RATES -->
+        <!-- =========================
+             RATES
+        ========================== -->
 
         <div class="rates">
 
@@ -683,12 +898,13 @@
         <div class="divider"></div>
 
 
-        <!-- RESULT -->
+        <!-- =========================
+             RESULT
+        ========================== -->
 
         <div class="result-title">
             📊 Hasil Perhitungan
         </div>
-
 
         <div class="result-list">
 
@@ -740,8 +956,6 @@
             </div>
 
 
-            <!-- LISTING -->
-
             <div
                 class="result-row"
                 id="listingRow"
@@ -761,8 +975,6 @@
             </div>
 
 
-            <!-- SALES TAX -->
-
             <div class="result-row">
 
                 <span class="result-label">
@@ -778,8 +990,6 @@
 
             </div>
 
-
-            <!-- TOTAL FEE -->
 
             <div class="result-row">
 
@@ -799,7 +1009,9 @@
         </div>
 
 
-        <!-- FINAL RESULT -->
+        <!-- =========================
+             FINAL RESULT
+        ========================== -->
 
         <div class="final-result">
 
@@ -824,7 +1036,9 @@
         </div>
 
 
-        <!-- FORMULA -->
+        <!-- =========================
+             FORMULA
+        ========================== -->
 
         <div class="formula">
 
@@ -850,11 +1064,134 @@
         </div>
 
 
-        <!-- RESET -->
+        <!-- =========================
+             QUICK CALCULATOR
+        ========================== -->
+
+        <div class="quick-calculator">
+
+            <div class="quick-header">
+
+                <div class="quick-title">
+                    🧮 Quick Calculator
+                </div>
+
+                <div class="quick-badge">
+                    AUTO CALCULATE
+                </div>
+
+            </div>
+
+
+            <div class="quick-input-wrapper">
+
+                <input
+                    id="quickInput"
+                    class="quick-input"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="Contoh: 2+2"
+                    aria-label="Quick Calculator"
+                >
+
+                <button
+                    type="button"
+                    class="quick-clear"
+                    id="quickClear"
+                    title="Hapus"
+                    aria-label="Hapus perhitungan"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="quick-result">
+
+                <div class="quick-result-label">
+                    Hasil
+                </div>
+
+                <div
+                    class="quick-result-value"
+                    id="quickResult"
+                    aria-live="polite"
+                >
+                    0
+                </div>
+
+                <div
+                    class="quick-status"
+                    id="quickStatus"
+                    aria-live="polite"
+                >
+                    Ketik operasi matematika untuk menghitung otomatis.
+                </div>
+
+            </div>
+
+
+            <div class="quick-examples">
+
+                <button
+                    type="button"
+                    class="example"
+                    data-expression="2+2"
+                >
+                    2 + 2
+                </button>
+
+                <button
+                    type="button"
+                    class="example"
+                    data-expression="100*5"
+                >
+                    100 × 5
+                </button>
+
+                <button
+                    type="button"
+                    class="example"
+                    data-expression="1000-250"
+                >
+                    1000 − 250
+                </button>
+
+                <button
+                    type="button"
+                    class="example"
+                    data-expression="100/4"
+                >
+                    100 ÷ 4
+                </button>
+
+                <button
+                    type="button"
+                    class="example"
+                    data-expression="(100+50)*2"
+                >
+                    (100 + 50) × 2
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RESET
+        ========================== -->
 
         <div class="actions">
 
-            <button id="resetButton">
+            <button
+                type="button"
+                class="reset-button"
+                id="resetButton"
+            >
                 ↻ Reset Calculator
             </button>
 
@@ -873,16 +1210,15 @@
 <script>
 
     // ==========================================
-    // KONFIGURASI
+    // KONFIGURASI SALES CALCULATOR
     // ==========================================
 
     const LISTING_FEE_RATE = 0.05;
-
     const SALES_TAX_RATE = 0.10;
 
 
     // ==========================================
-    // ELEMENT
+    // ELEMENT SALES CALCULATOR
     // ==========================================
 
     const priceInput =
@@ -935,6 +1271,23 @@
 
 
     // ==========================================
+    // ELEMENT QUICK CALCULATOR
+    // ==========================================
+
+    const quickInput =
+        document.getElementById("quickInput");
+
+    const quickResult =
+        document.getElementById("quickResult");
+
+    const quickStatus =
+        document.getElementById("quickStatus");
+
+    const quickClear =
+        document.getElementById("quickClear");
+
+
+    // ==========================================
     // MODE
     // ==========================================
 
@@ -968,7 +1321,7 @@
 
         return new Intl.NumberFormat("id-ID", {
 
-            maximumFractionDigits: 0
+            maximumFractionDigits: 10
 
         }).format(number);
 
@@ -1035,7 +1388,7 @@
 
 
     // ==========================================
-    // CALCULATE
+    // SALES CALCULATOR
     // ==========================================
 
     function calculate() {
@@ -1046,8 +1399,6 @@
         let quantity =
             Number(quantityInput.value);
 
-
-        // Validasi
 
         if (!Number.isFinite(price) || price < 0) {
 
@@ -1063,17 +1414,9 @@
         }
 
 
-        // ==========================================
-        // TOTAL KOTOR
-        // ==========================================
-
         const gross =
             price * quantity;
 
-
-        // ==========================================
-        // LISTING FEE
-        // ==========================================
 
         let listingFee = 0;
 
@@ -1086,43 +1429,23 @@
         }
 
 
-        // ==========================================
-        // SALES TAX
-        // ==========================================
-
         const salesTax =
             gross * SALES_TAX_RATE;
 
-
-        // ==========================================
-        // TOTAL POTONGAN
-        // ==========================================
 
         const totalFee =
             listingFee + salesTax;
 
 
-        // ==========================================
-        // TOTAL BERSIH
-        // ==========================================
-
         const net =
             gross - totalFee;
 
-
-        // ==========================================
-        // BERSIH PER ITEM
-        // ==========================================
 
         const netPerItem =
             quantity > 0
                 ? net / quantity
                 : 0;
 
-
-        // ==========================================
-        // UPDATE
-        // ==========================================
 
         resultPrice.textContent =
             formatRupiah(price);
@@ -1157,6 +1480,531 @@
             formatRupiah(netPerItem);
 
     }
+
+
+    // ==========================================
+    // QUICK CALCULATOR
+    //
+    // Tidak menggunakan eval().
+    // Menggunakan parser matematika sederhana.
+    // Mendukung:
+    //
+    // 2+2
+    // 10-5
+    // 5*4
+    // 20/4
+    // (10+5)*2
+    // -10+5
+    // 2.5*4
+    // ==========================================
+
+
+    function tokenize(expression) {
+
+        const tokens = [];
+
+        let i = 0;
+
+
+        while (i < expression.length) {
+
+            const char =
+                expression[i];
+
+
+            // Skip spasi
+
+            if (/\s/.test(char)) {
+
+                i++;
+
+                continue;
+
+            }
+
+
+            // Angka
+
+            if (
+                /[0-9.]/.test(char)
+            ) {
+
+                let number = "";
+
+                let dotCount = 0;
+
+
+                while (
+                    i < expression.length &&
+                    /[0-9.]/.test(expression[i])
+                ) {
+
+                    if (expression[i] === ".") {
+
+                        dotCount++;
+
+                    }
+
+                    number += expression[i];
+
+                    i++;
+
+                }
+
+
+                if (
+                    number === "." ||
+                    dotCount > 1
+                ) {
+
+                    throw new Error(
+                        "Angka tidak valid"
+                    );
+
+                }
+
+
+                const value =
+                    Number(number);
+
+
+                if (!Number.isFinite(value)) {
+
+                    throw new Error(
+                        "Angka terlalu besar"
+                    );
+
+                }
+
+
+                tokens.push({
+                    type: "number",
+                    value: value
+                });
+
+                continue;
+
+            }
+
+
+            // Operator
+
+            if (
+                char === "+" ||
+                char === "-" ||
+                char === "*" ||
+                char === "/"
+            ) {
+
+                tokens.push({
+                    type: "operator",
+                    value: char
+                });
+
+                i++;
+
+                continue;
+
+            }
+
+
+            // Kurung
+
+            if (char === "(") {
+
+                tokens.push({
+                    type: "leftParen",
+                    value: char
+                });
+
+                i++;
+
+                continue;
+
+            }
+
+
+            if (char === ")") {
+
+                tokens.push({
+                    type: "rightParen",
+                    value: char
+                });
+
+                i++;
+
+                continue;
+
+            }
+
+
+            throw new Error(
+                "Karakter tidak didukung"
+            );
+
+        }
+
+
+        return tokens;
+
+    }
+
+
+    function parseExpression(tokens) {
+
+        let position = 0;
+
+
+        function parseFactor() {
+
+            const token =
+                tokens[position];
+
+
+            // Unary + / -
+
+            if (
+                token &&
+                token.type === "operator" &&
+                (
+                    token.value === "+" ||
+                    token.value === "-"
+                )
+            ) {
+
+                position++;
+
+                const value =
+                    parseFactor();
+
+
+                return token.value === "-"
+                    ? -value
+                    : value;
+
+            }
+
+
+            // Number
+
+            if (
+                token &&
+                token.type === "number"
+            ) {
+
+                position++;
+
+                return token.value;
+
+            }
+
+
+            // Parentheses
+
+            if (
+                token &&
+                token.type === "leftParen"
+            ) {
+
+                position++;
+
+                const value =
+                    parseAddSubtract();
+
+
+                const closing =
+                    tokens[position];
+
+
+                if (
+                    !closing ||
+                    closing.type !== "rightParen"
+                ) {
+
+                    throw new Error(
+                        "Kurung belum ditutup"
+                    );
+
+                }
+
+
+                position++;
+
+                return value;
+
+            }
+
+
+            throw new Error(
+                "Ekspresi belum lengkap"
+            );
+
+        }
+
+
+        function parseMultiplyDivide() {
+
+            let value =
+                parseFactor();
+
+
+            while (
+                position < tokens.length &&
+                tokens[position].type === "operator" &&
+                (
+                    tokens[position].value === "*" ||
+                    tokens[position].value === "/"
+                )
+            ) {
+
+                const operator =
+                    tokens[position].value;
+
+                position++;
+
+
+                const right =
+                    parseFactor();
+
+
+                if (
+                    operator === "/" &&
+                    right === 0
+                ) {
+
+                    throw new Error(
+                        "Tidak bisa dibagi dengan 0"
+                    );
+
+                }
+
+
+                if (operator === "*") {
+
+                    value =
+                        value * right;
+
+                } else {
+
+                    value =
+                        value / right;
+
+                }
+
+
+                if (!Number.isFinite(value)) {
+
+                    throw new Error(
+                        "Hasil terlalu besar"
+                    );
+
+                }
+
+            }
+
+
+            return value;
+
+        }
+
+
+        function parseAddSubtract() {
+
+            let value =
+                parseMultiplyDivide();
+
+
+            while (
+                position < tokens.length &&
+                tokens[position].type === "operator" &&
+                (
+                    tokens[position].value === "+" ||
+                    tokens[position].value === "-"
+                )
+            ) {
+
+                const operator =
+                    tokens[position].value;
+
+                position++;
+
+
+                const right =
+                    parseMultiplyDivide();
+
+
+                if (operator === "+") {
+
+                    value =
+                        value + right;
+
+                } else {
+
+                    value =
+                        value - right;
+
+                }
+
+
+                if (!Number.isFinite(value)) {
+
+                    throw new Error(
+                        "Hasil terlalu besar"
+                    );
+
+                }
+
+            }
+
+
+            return value;
+
+        }
+
+
+        const result =
+            parseAddSubtract();
+
+
+        if (position < tokens.length) {
+
+            throw new Error(
+                "Ekspresi tidak valid"
+            );
+
+        }
+
+
+        return result;
+
+    }
+
+
+    // ==========================================
+    // QUICK CALCULATE
+    // ==========================================
+
+    function calculateQuick() {
+
+        const expression =
+            quickInput.value.trim();
+
+
+        // Kosong
+
+        if (expression === "") {
+
+            quickResult.textContent = "0";
+
+            quickStatus.textContent =
+                "Ketik operasi matematika untuk menghitung otomatis.";
+
+            return;
+
+        }
+
+
+        try {
+
+            const tokens =
+                tokenize(expression);
+
+
+            if (tokens.length === 0) {
+
+                quickResult.textContent = "0";
+
+                return;
+
+            }
+
+
+            const result =
+                parseExpression(tokens);
+
+
+            if (!Number.isFinite(result)) {
+
+                throw new Error(
+                    "Hasil tidak valid"
+                );
+
+            }
+
+
+            quickResult.textContent =
+                formatNumber(result);
+
+
+            quickStatus.textContent =
+                expression +
+                " = " +
+                formatNumber(result);
+
+        } catch (error) {
+
+            quickResult.textContent =
+                "…";
+
+            quickStatus.textContent =
+                error.message;
+
+        }
+
+    }
+
+
+    // ==========================================
+    // QUICK INPUT AUTO CALCULATE
+    // ==========================================
+
+    quickInput.addEventListener(
+        "input",
+        calculateQuick
+    );
+
+
+    // ==========================================
+    // QUICK CLEAR
+    // ==========================================
+
+    quickClear.addEventListener(
+        "click",
+        function() {
+
+            quickInput.value = "";
+
+            calculateQuick();
+
+            quickInput.focus();
+
+        }
+    );
+
+
+    // ==========================================
+    // QUICK EXAMPLES
+    // ==========================================
+
+    document
+        .querySelectorAll(".example")
+        .forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    quickInput.value =
+                        this.dataset.expression;
+
+                    calculateQuick();
+
+                    quickInput.focus();
+
+                }
+            );
+
+        });
 
 
     // ==========================================
@@ -1210,17 +2058,22 @@
         "click",
         function() {
 
-            priceInput.value = 1000000;
+            priceInput.value =
+                1000000;
 
-            quantityInput.value = 1;
+            quantityInput.value =
+                1;
 
-            calculationMode = 1;
+            calculationMode =
+                1;
+
 
             document
                 .querySelector(
                     'input[value="1"]'
                 )
                 .checked = true;
+
 
             updateModeUI();
 
@@ -1237,6 +2090,8 @@
     updateModeUI();
 
     calculate();
+
+    calculateQuick();
 
 </script>
 
